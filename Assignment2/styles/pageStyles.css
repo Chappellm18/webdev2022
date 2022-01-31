@@ -1,0 +1,31 @@
+::selection {
+    background: #fa9179fa;
+    color: #000000;
+}
+
+p {
+    font-family: myFont;
+    font-size: 18px;
+    color: rgba(46, 32, 240, 0.8);
+    line-height: 1.6;
+}
+
+h1 {
+    font-family: myFont;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: rgba(46, 32, 240, 0.8);
+}
+
+body {
+    text-align: center;
+    background-color: rgba(255, 224, 224, 0.8);
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+@font-face {
+    font-family: myFont;
+    src: url('./AgentOrange.ttf');
+}
