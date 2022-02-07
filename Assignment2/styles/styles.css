@@ -1,0 +1,92 @@
+/* general styles */
+body {
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(252, 242, 228);
+    text-align: center;
+}
+
+::selection {
+    background: #add8e6;
+    color: #000000;
+}
+
+@font-face {
+    font-family: titleFont;
+    src: url('./styles/AgentOrange.ttf');
+}
+
+a:visited {
+    color: rgba(23, 94, 247, 0.863);
+}
+
+/* titles */
+.title {
+    font-family: titleFont;
+}
+
+h2 {
+    font-family: titleFont;
+}
+
+/* p text for main page content */
+p {
+    color: rgb(18, 43, 8);
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+/* Container for main page */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* nav bar css */
+.nav {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgba(23, 94, 247, 0.863);
+    border-bottom: rgba(248, 219, 224, 0.068) 5px solid;
+}
+
+.nav a:hover {
+    color: rgba(91, 138, 138, 0.87);
+    border-bottom: rgb(248, 219, 224) solid 5px;
+}
+
+/* Holds the content for the page */
+.content {
+    width: 80%;
+    margin-bottom: 25px;
+}
+
+/* footer */
+.ft-hr {
+    width: 100%;
+}
+
+.footer {
+    width: 100%;
+}
+
+.footer p a {
+    text-decoration: none;
+}
+
+/* For the image */
+.front-image {
+    height: 300px;
+    width: 300px;
+}
