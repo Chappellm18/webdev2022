@@ -38,6 +38,7 @@
 
 <script>
 //import { login } from "../../../server/database.js";
+import { login } from "../services/session.js";
 export default {
   data() {
     return {
@@ -46,11 +47,9 @@ export default {
     };
   },
   methods: {
-    /*
     submit() {
       login(this.username, this.password);
     },
-    */
   },
 };
 </script>

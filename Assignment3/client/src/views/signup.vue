@@ -93,7 +93,7 @@
 </template>
 
 <script>
-//import { insertUser } from "../../../server/database.js";
+import { AddUser } from "../services/users.js";
 export default {
   data() {
     return {
@@ -107,15 +107,14 @@ export default {
   },
   methods: {
     submit() {
-      /*
-      insertUser(
+      AddUser(
+        this.name,
         this.username,
-        this.password,
         this.email,
+        this.password,
         this.role,
         this.message
       );
-      */
     },
   },
 };

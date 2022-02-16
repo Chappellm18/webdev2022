@@ -1,1 +1,23 @@
-imma make a website to make animal dontation easier
+Project Idea
+
+A website to promote animal shelter dontations
+
+There will be two kinds of accounts, one for donators and one for shelters
+
+the shelters will be able to post what they are in need of
+
+the donators will be able to search for places to donate
+they will be able to see what each shelter is requesting 
+
+kinda like a facebook group but diticated to animal shelters
+
+
+
+--------------------------------------------------------------------------------
+
+server is not functioning fully
+to view the front end and the login/signup page
+use: 
+    cd client
+    npm run serve
+

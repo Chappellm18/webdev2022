@@ -9,6 +9,8 @@ require('dotenv').config();
 
 const app = express();
 
+const userController = require('./controllers/users.js');
+
 app
     .use(cors({
         origin: '*',
@@ -16,7 +18,7 @@ app
     }))
 
     .use(express.static(path.join(__dirname, '../docs')))
-
+    .use('/users', userController)
     .use(express.json())
 
 

@@ -10,7 +10,10 @@ var connection = mysql.createConnection({
 
 connection.connect()
 
-// login function
+module.exports = {
+    connection
+}
+/* login function
 exports.login = function (username, password, callback) {
     var sql = 'SELECT * FROM users WHERE username = ? AND password = ?'
     var params = [username, password]
@@ -35,5 +38,6 @@ exports.insertUser = function (username, password, email, role, message, callbac
         }
     })
 }
+*/
 
 connection.end()
