@@ -4,11 +4,9 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const httpPort = process.env.PORT || 3000;
 require('dotenv').config();
-
+const httpPort = process.env.PORT || 3000;
 const app = express();
-
 const userController = require('./controllers/users.js');
 
 app

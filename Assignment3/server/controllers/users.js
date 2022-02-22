@@ -1,7 +1,7 @@
 const express = require('express');
 const models = require('../models/users.js');
 
-const app = express.Router();
+const app = express();
 
 // get all users
 app.get('/', (req, res) => {

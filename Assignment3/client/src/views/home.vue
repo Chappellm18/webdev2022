@@ -12,6 +12,10 @@
       </div>
     </section>
 
+    <section class="section">
+      <image-gallary />
+    </section>
+
     <section id="mission" class="section is-medium">
       <div class="content">
         <h1>Mission</h1>
@@ -39,7 +43,10 @@
 </template>
 
 <script>
-export default {};
+import imageGallary from "../components/imageGallary.vue";
+export default {
+  components: { imageGallary },
+};
 </script>
 
 <style>

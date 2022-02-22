@@ -1,27 +1,5 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img
-          src="https://bulma.io/images/bulma-logo.png"
-          width="112"
-          height="28"
-        />
-      </a>
-
-      <a
-        role="button"
-        class="navbar-burger"
-        aria-label="menu"
-        aria-expanded="false"
-        data-target="navbarBasicExample"
-      >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item"><router-link to="/"> Home </router-link> </a>
@@ -36,6 +14,26 @@
 
         <a class="navbar-item"
           ><router-link to="/mission"> Mission </router-link>
+        </a>
+      </div>
+
+      <div class="navbar-brand">
+        <img
+          class="image"
+          src="https://via.placeholder.com/350x150"
+          alt="logo"
+        />
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
       </div>
 
@@ -61,5 +59,12 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+.navbar {
+  height: 10rem;
+  background: #f2f2f2;
+}
+.navbar-start {
+  padding: 2rem;
+}
 </style>
