@@ -76,7 +76,7 @@
         <div class="field">
           <div class="control">
             <label class="checkbox">
-              <input type="checkbox" />
+              <input type="checkbox" required />
               I agree to the <a href="#">terms and conditions</a>
             </label>
           </div>
@@ -107,14 +107,23 @@ export default {
   },
   methods: {
     submit() {
+      // call the addUser function from the users service
       AddUser(
         this.name,
         this.username,
-        this.email,
+
         this.password,
+        this.email,
         this.role,
         this.message
       );
+      // clear the form
+      this.name = "";
+      this.username = "";
+      this.email = "";
+      this.password = "";
+      this.message = "";
+      this.role = "";
     },
   },
 };

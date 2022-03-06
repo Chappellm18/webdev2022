@@ -1,3 +1,25 @@
 ###
-http://localhost:3000/users/
+http://localhost:3100/users/
+
+###
+http://localhost:3100/users/login
+Content-Type: application/json
+
+    {
+        "username": "a",
+        "password": "a"
+    }
+
+###
+http://localhost:3100/users/add
+Content-Type: application/json
+
+    {
+        "name": "b",
+        "username": "b",
+        "password": "b",
+        "email": "b@b.b",
+        "role": "b",
+        "message": "b"
+    }
 

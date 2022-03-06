@@ -3,6 +3,8 @@ const models = require('../models/users.js');
 
 const app = express();
 
+app.use(express.Router());
+
 // get all users
 app.get('/', (req, res) => {
     models.GetAllUsers()
@@ -12,7 +14,7 @@ app.get('/', (req, res) => {
         .catch(err => {
             res.json(err)
         })
-})
+});
 
 // login
 app.post('/login', (req, res) => {
@@ -23,16 +25,29 @@ app.post('/login', (req, res) => {
         .catch(err => {
             res.json(err)
         })
-})
+});
 
 // add user
 app.post('/add', (req, res) => {
-    models.AddUser(req.body.username, req.body.password, req.body.email, req.body.role, req.body.message)
+    //console.log("name:" + req.params.name);
+
+    // wait for values to be passed in from the client
+    let name = req.body.name;
+    let username = req.body.username;
+    let password = req.body.password;
+    let email = req.body.email;
+    let role = req.body.role;
+    let message = req.body.message;
+
+    // add user to the mySQL db
+    models.AddUser(name, username, password, email, role, message)
         .then(user => {
             res.json(user)
         })
         .catch(err => {
             res.json(err)
         })
-})
+});
 
+
+module.exports = app;

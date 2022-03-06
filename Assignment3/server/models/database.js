@@ -1,7 +1,7 @@
 /* eslint-disable */
-var mysql = require('mysql')
+let mysql = require('mysql')
 require('dotenv').config()
-var connection = mysql.createConnection({
+let connection = mysql.createConnection({
     host: 'localhost',
     user: process.env.SQL_DB_USER,
     password: process.env.SQL_DB_PASSWORD,
@@ -40,4 +40,4 @@ exports.insertUser = function (username, password, email, role, message, callbac
 }
 */
 
-connection.end()
+//connection.end()

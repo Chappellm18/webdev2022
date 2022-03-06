@@ -8,16 +8,17 @@ require('dotenv').config();
 const httpPort = process.env.PORT || 3000;
 const app = express();
 const userController = require('./controllers/users.js');
-
+const bodyPaser = require('body-parser');
 app
     .use(cors({
         origin: '*',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     }))
-
+    .use(express.json())
     .use(express.static(path.join(__dirname, '../docs')))
     .use('/users', userController)
-    .use(express.json())
+    .use(bodyPaser.json())
+
 
 
 // gets 
