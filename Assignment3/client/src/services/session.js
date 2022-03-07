@@ -1,14 +1,19 @@
-//import router from '../router/index.js';
-import { login } from './users.js';
+import router from '../router/index.js';
+import { Login } from './users.js';
 
 
 const session = {
     user: null,
     async login(username, password) {
 
-        const user = await login(username, password);
+        let user = await Login(username, password);
+
         this.user = user;
-    },
+        console.log(this.user);
+        // redirect page to home page
+        router.push('/');
+
+    }
 }
 
 // export session

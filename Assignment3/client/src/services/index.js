@@ -15,7 +15,7 @@ export async function api(endpoint, data, method) {
 
 
     // create a new promise
-    return new Promise(function (resolve, reject) {
+    return await new Promise(function (resolve, reject) {
         // create a new XMLHttpRequest
         let xhr = new XMLHttpRequest();
         // open the request
@@ -32,7 +32,7 @@ export async function api(endpoint, data, method) {
 
 
         xhr.send(insertData);
-        console.log(insertData);
+        //console.log(insertData);
         // listen for the request to complete
         xhr.onload = function () {
             // if we get a status code of 200, resolve the promise

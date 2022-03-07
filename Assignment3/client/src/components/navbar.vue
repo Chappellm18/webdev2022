@@ -38,7 +38,7 @@
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
+        <div class="navbar-item" v-if="session.user === null">
           <div class="buttons">
             <a class="button is-primary"
               ><router-link to="/signup">
@@ -50,13 +50,28 @@
             </a>
           </div>
         </div>
+        <div class="navbar-item" v-else>
+          <div class="card">
+            <div class="card-header">
+              <p class="card-header-title">{{ session.user.username }}</p>
+            </div>
+            <div class="card-body">stuff here</div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-export default {};
+import session from "../services/session.js";
+export default {
+  data() {
+    return {
+      session,
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -66,5 +81,12 @@ export default {};
 }
 .navbar-start {
   padding: 2rem;
+}
+.card {
+  width: 250px;
+  height: 80%;
+}
+.card-header {
+  padding: 10px;
 }
 </style>

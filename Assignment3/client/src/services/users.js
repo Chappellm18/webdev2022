@@ -6,14 +6,14 @@ export function GetAllUsers() {
 }
 
 // login
-export function Login(username, password) {
-    console.log("username:" + username);
-    console.log("password:" + password);
+export async function Login(username, password) {
+    //console.log("username:" + username);
+    //console.log("password:" + password);
     let user = {
         username: username,
         password: password
     };
-    return api('users/login', user, 'POST');
+    return await api('users/login', user, 'POST');
 }
 
 // add user

@@ -15,7 +15,7 @@ app
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     }))
     .use(express.json())
-    .use(express.static(path.join(__dirname, '../docs')))
+    .use(express.static(path.join(__dirname, '../docs/')))
     .use('/users', userController)
     .use(bodyPaser.json())
 

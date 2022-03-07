@@ -37,8 +37,8 @@
 </template>
 
 <script>
-//import { login } from "../../../server/database.js";
-import { Login } from "../services/users.js";
+import session from "../services/session.js";
+//import { Login } from "../services/users.js";
 export default {
   data() {
     return {
@@ -48,11 +48,7 @@ export default {
   },
   methods: {
     submit() {
-      console.log("submit");
-      console.log(this.username);
-      console.log(this.password);
-
-      Login(this.username, this.password);
+      session.login(this.username, this.password);
     },
   },
 };
