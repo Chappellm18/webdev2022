@@ -1,29 +1,26 @@
 <template>
-  <section class="section is-large">
-    <div class="columns">
-      <div class="column">
-        <figure class="image">
-          <img
-            src="https://via.placeholder.com/1024"
-            alt="The alt text for the image"
-          />
-        </figure>
+  <section class="section is-medium" id="gallery">
+    <div class="level">
+      <div class="level-item">
+        <div class="image">
+          <figure class="image">
+            <img src="../assets/holder3.jpg" alt="" />
+          </figure>
+        </div>
       </div>
-      <div class="column">
-        <figure class="image">
-          <img
-            src="https://via.placeholder.com/1024"
-            alt="The alt text for the image"
-          />
-        </figure>
+      <div class="level-item">
+        <div class="image">
+          <figure class="image">
+            <img src="../assets/holder1.jpg" alt="" />
+          </figure>
+        </div>
       </div>
-      <div class="column">
-        <figure class="image">
-          <img
-            src="https://via.placeholder.com/1024"
-            alt="The alt text for the image"
-          />
-        </figure>
+      <div class="level-item">
+        <div class="image">
+          <figure class="image">
+            <img src="../assets/holder2.jpg" alt="" />
+          </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -34,7 +31,16 @@ export default {};
 </script>
 
 <style scoped>
-.column {
-  margin: 50px;
+#gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.image {
+  width: 45rem;
+}
+.image:hover {
+  opacity: 0.5;
 }
 </style>
