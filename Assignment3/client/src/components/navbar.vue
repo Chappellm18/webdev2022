@@ -51,11 +51,21 @@
           </div>
         </div>
         <div class="navbar-item" v-else>
-          <div class="card">
-            <div class="card-header">
-              <p class="card-header-title">{{ session.user.username }}</p>
+          <div class="columns" id="profile-badge">
+            <div class="column">
+              {{ session.user.username }}
             </div>
-            <div class="card-body">stuff here</div>
+            <div class="column">
+              <figure class="image">
+                <a
+                  ><router-link to="/profile"
+                    ><img
+                      class="avatar is-rounded"
+                      src="../assets/holder1.jpg"
+                      alt="" /></router-link
+                ></a>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -75,6 +85,9 @@ export default {
 </script>
 
 <style scoped>
+#profile-badge {
+  margin-right: 0.5rem;
+}
 .navbar {
   height: 10rem;
   background: #f2f2f2;
@@ -82,9 +95,8 @@ export default {
 .navbar-start {
   padding: 2rem;
 }
-.card {
-  width: 250px;
-  height: 80%;
+.avatar {
+  scale: 2;
 }
 .card-header {
   padding: 10px;

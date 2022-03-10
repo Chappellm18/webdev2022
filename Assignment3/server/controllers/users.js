@@ -29,8 +29,6 @@ app.post('/login', (req, res) => {
 
 // add user
 app.post('/add', (req, res) => {
-    //console.log("name:" + req.params.name);
-
     // wait for values to be passed in from the client
     let name = req.body.name;
     let username = req.body.username;
@@ -38,7 +36,6 @@ app.post('/add', (req, res) => {
     let email = req.body.email;
     let role = req.body.role;
     let message = req.body.message;
-
     // add user to the mySQL db
     models.AddUser(name, username, password, email, role, message)
         .then(user => {
@@ -48,6 +45,25 @@ app.post('/add', (req, res) => {
             res.json(err)
         })
 });
+
+// get all post requests
+
+// get post request by id
+
+// create a post reuest
+
+// get all post haves
+
+// get post have by id
+
+// create a post have
+
+// get all posts general
+
+// get post general by id
+
+
+
 
 
 module.exports = app;

@@ -9,11 +9,11 @@ const session = {
         let user = await Login(username, password);
 
         this.user = user;
-        console.log(this.user);
+
         // redirect page to home page
         router.push('/');
 
-    }
+    },
 }
 
 // export session

@@ -64,7 +64,20 @@ module.exports.Login = async function Login(username, password) {
             }
         })
     })
-
-
-
 }
+
+// get all post requests
+
+// get post request by id
+
+// create a post reuest
+
+// get all post haves
+
+// get post have by id
+
+// create a post have
+
+// get all posts general
+
+// get post general by id
