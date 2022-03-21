@@ -40,17 +40,20 @@ export default {
   name: "App",
   data() {
     return {
-      center: { lat: 51.093048, lng: 6.84212 },
+      center: { lat: -47, lng: -47 },
       markers: [
         {
           position: {
-            lat: 51.093048,
-            lng: 6.84212,
+            lat: 47,
+            lng: 47,
           },
         }, // Along list of clusters
       ],
       input: "",
     };
+  },
+  mounted() {
+    this.loadInit();
   },
   methods: {
     search() {
@@ -60,6 +63,30 @@ export default {
       // fetch the geocoding api and get the lat and long
       fetch(
         `http://api.positionstack.com/v1/forward?access_key=${process.env.VUE_APP_ZIP_CODE_KEY}&query=${this.input}&output=json`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          //console.log(data);
+          lat = data.data[0].latitude;
+          long = data.data[0].longitude;
+          // set the center of the map to the lat and long
+          this.center = { lat: lat, lng: long };
+          // add the marker to the map
+          this.markers.push({
+            position: { lat: lat, lng: long },
+          });
+        });
+    },
+    loadInit() {
+      // take the input and convert it to its lat and long
+      let lat;
+      let long;
+      let q = "new york";
+      // TODO: get the user's location
+
+      // fetch the geocoding api and get the lat and long
+      fetch(
+        `http://api.positionstack.com/v1/forward?access_key=${process.env.VUE_APP_ZIP_CODE_KEY}&query=${q}&output=json`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -83,7 +110,7 @@ export default {
 
 <style scoped>
 .map {
-  height: 35rem;
+  height: 45rem;
   width: 100%;
 }
 .title {
