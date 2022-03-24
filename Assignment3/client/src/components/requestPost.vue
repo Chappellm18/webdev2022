@@ -23,6 +23,7 @@
               </div>
             </div>
           </div>
+
           <div class="message">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat
@@ -76,6 +77,7 @@ export default {};
   line-height: 1.5;
   position: relative;
   top: 40%;
+
   background: none;
 }
 .user {
