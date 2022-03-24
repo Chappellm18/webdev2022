@@ -13,7 +13,7 @@
             <a class="nav-link" @click="havesAct = !havesAct">Needs</a>
           </li>
         </ul>
-        <div class="haves" v-if="havesAct">
+        <div class="haves" v-if="havesAct === true">
           <postHave />
         </div>
         <div class="needs" else>
