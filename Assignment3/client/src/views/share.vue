@@ -17,7 +17,9 @@
         </div>
 
         <div class="haves" v-if="havesAct === true">
-          <postHave />
+          <div v-for="post in posts" :key="post.id">
+            <postHave />
+          </div>
         </div>
         <div class="needs" v-else>
           <postNeed />
@@ -41,6 +43,11 @@ export default {
   data() {
     return {
       havesAct: true,
+      posts: [
+        { id: 1, title: "Post 1", content: "Content 1" },
+        { id: 2, title: "Post 2", content: "Content 2" },
+        { id: 3, title: "Post 3", content: "Content 3" },
+      ],
     };
   },
 };
