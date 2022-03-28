@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 section {
   margin: 4rem;
 }
@@ -89,8 +89,8 @@ section {
 #missionText {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: flex-start;
+  justify-content: left;
+  align-items: left;
 }
 .content {
   text-align: center;

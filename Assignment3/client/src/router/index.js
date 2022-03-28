@@ -6,6 +6,7 @@ import share from '../views/share.vue'
 import mission from '../views/mission.vue'
 import shelterLocator from '../views/shelterLocator.vue'
 import profile from '../views/profile.vue'
+import createPost from '../views/createPost.vue'
 
 const routes = [
   { path: '/', name: 'home', component: home },
@@ -14,7 +15,8 @@ const routes = [
   { path: '/share', name: 'share', component: share },
   { path: '/mission', name: 'mission', component: mission },
   { path: '/shelterLocator', name: 'shelterLocator', component: shelterLocator },
-  { path: '/profile', name: 'profile', component: profile }
+  { path: '/profile', name: 'profile', component: profile },
+  { path: '/createPost', name: 'createPost', component: createPost },
 
 ]
 

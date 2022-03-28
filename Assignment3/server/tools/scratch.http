@@ -15,7 +15,7 @@ http://localhost:3100/users/add
 Content-Type: application/json
 
     {
-        "name": "b",
+        "name": "b1",
         "username": "b",
         "password": "b",
         "email": "b@b.b",

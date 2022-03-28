@@ -1,32 +1,20 @@
 <template>
-  <div>
-    <aside class="menu">
-      <p class="menu-label">General</p>
-      <ul class="menu-list">
+  <!-- sidebar with options -->
+  <div class="sidebar">
+    <div class="sidebar-header"></div>
+    <div class="sidebar-menu">
+      <ul>
         <li>
-          <router-link to="profile"><a>Profile</a></router-link>
+          <a> <router-link to="createPost">Create post</router-link> </a>
         </li>
         <li>
-          <router-link to="share"><a>Feed</a></router-link>
+          <a><router-link to="findPost">Find post</router-link></a>
         </li>
         <li>
-          <router-link to="profile"><a>Settings</a></router-link>
+          <a><router-link to="profile"> View your posts </router-link></a>
         </li>
       </ul>
-      <p class="menu-label">Requests</p>
-      <ul class="menu-list">
-        <li>
-          <a>Create post</a>
-        </li>
-
-        <li><a>Edit post</a></li>
-      </ul>
-      <p class="menu-label">Haves</p>
-      <ul class="menu-list">
-        <li><a>Create post</a></li>
-        <li><a>Edit post</a></li>
-      </ul>
-    </aside>
+    </div>
   </div>
 </template>
 
