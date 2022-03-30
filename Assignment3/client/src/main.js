@@ -5,6 +5,8 @@ import router from './router'
 require('dotenv').config()
 import VueGoogleMaps from '@fawmi/vue-google-maps'
 
+
+
 const app = createApp(App);
 
 app.use(VueGoogleMaps, {

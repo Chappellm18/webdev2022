@@ -38,38 +38,16 @@
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item" v-if="session.user === null">
-          <div class="buttons">
-            <a class="button is-primary"
-              ><router-link to="/signup">
-                <strong>Sign up</strong>
-              </router-link>
-            </a>
-            <a class="button is-light"
-              ><router-link to="/login"> Log in </router-link>
-            </a>
-          </div>
-        </div>
-        <div class="navbar-item" v-else>
-          <profilenavbar />
-        </div>
+        <navbarEnd />
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import profilenavbar from "../components/profileNavbar.vue";
-import session from "../services/session.js";
+import navbarEnd from "./navbarEnd.vue";
 export default {
-  data() {
-    return {
-      session,
-    };
-  },
-  components: {
-    profilenavbar,
-  },
+  components: { navbarEnd },
 };
 </script>
 

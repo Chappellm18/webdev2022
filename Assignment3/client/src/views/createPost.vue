@@ -4,7 +4,12 @@
     <form>
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea class="form-control" id="message" rows="3"></textarea>
+        <textarea
+          class="form-control"
+          v-model="message"
+          id="message"
+          rows="3"
+        ></textarea>
       </div>
       <br />
       <div class="form-group">
@@ -13,6 +18,7 @@
           type="text"
           class="form-control"
           id="image"
+          v-model="image"
           placeholder="Image URL"
         />
         <br />
@@ -40,7 +46,24 @@
 </template>
 
 <script>
-export default {};
+import { CreatePostHave } from "../services/havePosts.js";
+export default {
+  data() {
+    return {
+      message: "",
+      image: "",
+    };
+  },
+  methods: {
+    sendPost() {
+      // send post to server
+      CreatePostHave(this.message, this.image);
+      // clear form
+      this.message = "";
+      this.image = "";
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -50,7 +73,7 @@ hr {
 .create-post {
   width: 70%;
   margin: 0 auto;
-  margin-top: 3rem;
+  margin-top: 5rem;
 }
 .btn {
   margin: 10px;

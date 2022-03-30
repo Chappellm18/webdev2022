@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <navbar />
+      <navBar />
     </div>
     <router-view />
 
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import navbar from "./components/navbar.vue";
+import navBar from "./components/newNav.vue";
 import ft from "./components/foot.vue";
 export default {
   components: {
-    navbar,
+    navBar,
     ft,
   },
 };

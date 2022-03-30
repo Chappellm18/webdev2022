@@ -3,7 +3,15 @@ import { Login } from './users.js';
 
 
 const session = {
-    user: null,
+    user: {
+        email: null,
+        message: null,
+        name: null,
+        password: null,
+        role: null,
+        userID: null,
+        username: null
+    },
     async login(username, password) {
 
         let user = await Login(username, password);
