@@ -29,10 +29,12 @@ module.exports.GetAllRequestPosts = function GetAllRequestPosts() {
 }
 
 // create a have post
-module.exports.CreateHavePost = function CreateHavePost(post_id, user_id) {
+module.exports.CreateHavePost = function CreateHavePost(user_id, message, image, active, orgInterested, animalTypes) {
     // add post to mySQL db
+    let sql = "INSERT INTO `web-dev`.`havepost` VALUES ('" + user_id + "', '" + message + "', '" + image + "', '" + active + "', '" + orgInterested + "', '" + animalTypes + "')";
     return new Promise((resolve, reject) => {
-        let sql = "INSERT INTO `web-dev`.`havepost` VALUES ('" + post_id + "', '" + user_id + "')";
+
+        //console.log(sql);
         connection.query(sql, function (err, results) {
             if (err) {
                 reject(err)

@@ -75,6 +75,9 @@ export default {
           this.markers.push({
             position: { lat: lat, lng: long },
           });
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
     loadInit() {
@@ -90,7 +93,7 @@ export default {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          //console.log(data);
           lat = data.data[0].latitude;
           long = data.data[0].longitude;
           // set the center of the map to the lat and long
@@ -99,6 +102,9 @@ export default {
           this.markers.push({
             position: { lat: lat, lng: long },
           });
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
     getShelters() {

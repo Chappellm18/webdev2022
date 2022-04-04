@@ -1,7 +1,7 @@
 <template>
   <div class="create-post">
     <!-- form to create a new post needs image, message -->
-    <form>
+    <form @submit.prevent="sendPost" method="post">
       <div class="form-group">
         <label for="message">Message</label>
         <textarea
@@ -22,7 +22,7 @@
           placeholder="Image URL"
         />
         <br />
-        <div class="file has-name">
+        <!--div class="file has-name">
           <label class="file-label">
             <input class="file-input" type="file" name="resume" />
             <span class="file-cta">
@@ -35,7 +35,7 @@
               Screen Shot 2017-07-29 at 15.54.25.png
             </span>
           </label>
-        </div>
+        </div-->
         <hr />
       </div>
 
@@ -46,21 +46,38 @@
 </template>
 
 <script>
+import session from "../services/session.js";
 import { CreatePostHave } from "../services/havePosts.js";
 export default {
   data() {
     return {
+      user_id: session.user.userID,
       message: "",
       image: "",
+      animalTypes: "",
     };
   },
   methods: {
     sendPost() {
       // send post to server
-      CreatePostHave(this.message, this.image);
-      // clear form
-      this.message = "";
-      this.image = "";
+      //CreatePostHave(user_id,message,image,animalTypes)
+      let response = CreatePostHave(
+        this.user_id,
+        this.message,
+        this.image,
+        this.animalTypes
+      );
+      if (response !== null) {
+        // success
+        // clear form
+        this.message = "";
+        this.image = "";
+        this.animalTypes = "";
+        this.$router.push("/share");
+      } else {
+        // fail
+        alert("Failed to create post");
+      }
     },
   },
 };

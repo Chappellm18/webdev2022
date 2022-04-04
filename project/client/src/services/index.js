@@ -19,7 +19,9 @@ export async function api(endpoint, data, method) {
         // create a new XMLHttpRequest
         let xhr = new XMLHttpRequest();
         // open the request
-        xhr.open(method, API_ROOT + endpoint);
+        let call = API_ROOT + endpoint;
+        //console.log(call);
+        xhr.open(method, call);
         // set the content type header
         xhr.setRequestHeader('Content-Type', 'application/json');
         // set the authorization header
