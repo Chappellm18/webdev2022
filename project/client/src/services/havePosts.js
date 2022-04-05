@@ -18,7 +18,7 @@ export function CreatePostHave(user_id, message, image, animalTypes) {
         user_id: user_id,
         message: message,
         image: image,
-        active: true,
+        active: 1,
         orgInterested: '',
         animalTypes: animalTypes
     };

@@ -39,9 +39,54 @@
         <hr />
       </div>
 
-      <button type="button" class="btn btn-primary">Preview</button>
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Preview
+      </button>
+
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Post Preview</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -61,12 +106,16 @@ export default {
     sendPost() {
       // send post to server
       //CreatePostHave(user_id,message,image,animalTypes)
+      if (this.user_id === null) {
+        this.user_id = 0;
+      }
       let response = CreatePostHave(
         this.user_id,
         this.message,
         this.image,
         this.animalTypes
       );
+      console.log(response);
       if (response !== null) {
         // success
         // clear form
@@ -74,9 +123,6 @@ export default {
         this.image = "";
         this.animalTypes = "";
         this.$router.push("/share");
-      } else {
-        // fail
-        alert("Failed to create post");
       }
     },
   },
