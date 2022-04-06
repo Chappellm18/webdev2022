@@ -57,7 +57,7 @@ export default {
 }
 .navbar {
   height: 10rem;
-  background: #f2f2f2;
+  background: #fcde9c;
 }
 .navbar-start {
   padding: 2rem;

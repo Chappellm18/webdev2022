@@ -134,6 +134,7 @@ export default {
   width: 60%;
   margin: 0 auto;
   top: 5rem;
+  margin-bottom: 10rem;
 }
 .signup {
   margin: 0 auto;

@@ -59,6 +59,8 @@ export default {
   width: 60%;
   margin: 0 auto;
   top: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 35rem;
 }
 .login {
   margin: 0 auto;

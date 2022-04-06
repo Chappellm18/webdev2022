@@ -4,8 +4,8 @@
       <div class="content" id="welcontent">
         <h1>Welcome</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-          itaque dolorem ullam quam dolor cum earum doloribus voluptatem
+          Welcome to Shelter Helper! Your one stop shop for all things Animal
+          Shelter
         </p>
       </div>
     </section>
@@ -41,10 +41,8 @@
       <div class="content">
         <h1>Vision</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-          itaque dolorem ullam quam dolor cum earum doloribus voluptatem
-          perferendis, sit veritatis harum autem, sint deserunt distinctio,
-          laboriosam totam molestiae sunt.
+          Our vision is to make sure every shelter has their needs met and that
+          all animals are happy and safe.
         </p>
       </div>
     </section>
@@ -67,6 +65,7 @@ section {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  color: #381d2a;
 }
 #welcome {
   background-image: url("../assets/welcomeBG.jpg");
@@ -74,17 +73,19 @@ section {
   width: 100%;
 }
 #welcontent {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(200, 220, 242, 0.9);
   border-radius: 25px;
-  width: 50%;
+  width: max-content;
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin: auto;
 }
 #welcome h1 {
-  color: rgb(0, 0, 0);
+  color: #381d2a;
   margin-top: 5rem;
 }
 #welcome p {
-  color: rgb(0, 0, 0);
+  color: #381d2a;
 }
 #missionText {
   display: flex;
@@ -92,9 +93,14 @@ section {
   justify-content: left;
   align-items: left;
 }
+#mission {
+  color: #381d2a;
+}
 .content {
   text-align: center;
 }
 #vision {
+  width: 100%;
+  color: #381d2a;
 }
 </style>
