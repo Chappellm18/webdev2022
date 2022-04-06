@@ -12,8 +12,8 @@
     </div>
 
     <div class="haves" v-if="havesAct === true">
-      <div v-for="post in posts" :key="post.id">
-        <postHave />
+      <div v-for="post in posts_haves" :key="post.id">
+        <postHave :post="post" />
       </div>
     </div>
     <div class="needs" v-else>
@@ -25,6 +25,7 @@
 <script>
 import postHave from "../components/havePost.vue";
 import postNeed from "../components/requestPost.vue";
+import { GetAllPostHaves } from "../services/havePosts";
 
 export default {
   components: {
@@ -34,12 +35,13 @@ export default {
   data() {
     return {
       havesAct: true,
-      posts: [
-        { id: 1, title: "Post 1", content: "Content 1" },
-        { id: 2, title: "Post 2", content: "Content 2" },
-        { id: 3, title: "Post 3", content: "Content 3" },
-      ],
+      posts_haves: [],
+      //posts_requests: [],
     };
+  },
+  async mounted() {
+    this.posts_haves = await GetAllPostHaves();
+    //this.posts_requests = await GetAllPostRequests();
   },
 };
 </script>

@@ -2,26 +2,42 @@
   <div class="create-post">
     <!-- form to create a new post needs image, message -->
     <form @submit.prevent="sendPost" method="post">
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea
-          class="form-control"
-          v-model="message"
-          id="message"
-          rows="3"
-        ></textarea>
-      </div>
       <br />
       <div class="form-group">
-        <label for="image">Image</label>
-        <input
-          type="text"
-          class="form-control"
-          id="image"
-          v-model="image"
-          placeholder="Image URL"
-        />
-        <br />
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <input
+                type="text"
+                class="form-control"
+                id="image"
+                v-model="image"
+                placeholder="Image URL"
+              />
+            </div>
+            <div class="level-item">
+              <figure class="image">
+                <img v-bind:src="image" alt="image here" />
+              </figure>
+            </div>
+          </div>
+
+          <div class="level-right">
+            <div class="level-item">
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  class="form-control"
+                  v-model="message"
+                  id="message"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+
         <!--div class="file has-name">
           <label class="file-label">
             <input class="file-input" type="file" name="resume" />
@@ -37,7 +53,41 @@
           </label>
         </div-->
         <hr />
+        <div class="animalTypes">
+          <div class="btn-group">
+            <input
+              type="radio"
+              class="btn-check"
+              name="options"
+              v-model="animalTypes"
+              id="option1"
+              autocomplete="off"
+              checked
+            />
+            <label class="btn btn-color_cus" for="option1">Cat</label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="options"
+              id="option2"
+              autocomplete="off"
+            />
+            <label class="btn btn-color_cus" for="option2">Dog</label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="options"
+              id="option3"
+              autocomplete="off"
+            />
+            <label class="btn btn-color_cus" for="option3">Other</label>
+          </div>
+        </div>
       </div>
+
+      <hr />
 
       <!-- Button trigger modal -->
       <button
@@ -98,7 +148,7 @@ export default {
     return {
       user_id: session.user.userID,
       message: "",
-      image: "",
+      image: "https://via.placeholder.com/480",
       animalTypes: "",
     };
   },
@@ -141,4 +191,27 @@ hr {
 .btn {
   margin: 10px;
 }
+.level-right {
+  width: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#message {
+}
+.animalTypes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-color_cus {
+  background: purple;
+  height: 3rem;
+  color: white;
+  padding: 1rem;
+  margin-right: 0;
+}
+
+@import "~bootstrap/dist/css/bootstrap.css";
 </style>

@@ -7,7 +7,7 @@
           <figure class="image">
             <img
               class="post-img"
-              src="https://bulma.io/images/placeholders/480x480.png"
+              v-bind:src="post.image"
               alt="Placeholder image"
             />
           </figure>
@@ -39,10 +39,7 @@
           </div>
           <div class="message">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat
-              distinctio quis tenetur, ut dolores dignissimos odit dolorum
-              asperiores labore dolor esse deleniti nisi doloremque
-              necessitatibus quas, iusto nulla. Voluptas, iste!
+              {{ post.message }}
             </p>
           </div>
         </div>
@@ -52,7 +49,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>

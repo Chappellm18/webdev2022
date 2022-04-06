@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar-item" v-if="session.user.email !== null">
+  <div class="navbar-item" v-if="Session.user !== null">
     <profilenavbar />
   </div>
   <div class="navbar-item" v-else>
@@ -18,11 +18,11 @@
 
 <script>
 import profilenavbar from "../components/profileNavbar.vue";
-import session from "../services/session.js";
+import Session from "../services/session.js";
 export default {
   data() {
     return {
-      session,
+      Session,
     };
   },
   components: {

@@ -3,20 +3,12 @@ import { Login } from './users.js';
 
 
 const session = {
-    user: {
-        email: null,
-        message: null,
-        name: null,
-        password: null,
-        role: null,
-        userID: null,
-        username: null
-    },
+    user: null,
     async login(username, password) {
 
-        let user = await Login(username, password);
+        let user_res = await Login(username, password);
 
-        this.user = user;
+        this.user = user_res;
 
         // redirect page to home page
         router.push('/');

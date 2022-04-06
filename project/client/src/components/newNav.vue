@@ -5,9 +5,10 @@
     aria-label="main navigation"
   >
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="https://via.placeholder.com/350x150" />
-      </a>
+      <a class="navbar-item"
+        ><router-link to="/">
+          <img src="https://via.placeholder.com/350x150" /> </router-link
+      ></a>
 
       <a
         role="button"
@@ -68,11 +69,11 @@
 
 <script>
 import profileNavbar from "../components/profileNavbar.vue";
-import session from "../services/session.js";
+import Session from "../services/session.js";
 export default {
   data() {
     return {
-      session,
+      Session,
       logged: false,
       navBarIsActive: false,
     };
@@ -80,7 +81,7 @@ export default {
   components: { profileNavbar },
   methods: {
     isLogged() {
-      if (this.session.user.email != null) {
+      if (this.Session.user != null) {
         this.logged = true;
       }
     },
