@@ -1,44 +1,44 @@
 <template>
-  <div class="create-post">
-    <!-- form to create a new post needs image, message -->
-    <form @submit.prevent="sendPost" method="post">
-      <br />
-      <div class="form-group">
-        <div class="level">
-          <div class="level-left">
-            <div class="level-item">
-              <input
-                type="text"
-                class="form-control"
-                id="image"
-                v-model="image"
-                placeholder="Image URL"
-              />
-            </div>
-            <div class="level-item">
-              <figure class="image">
-                <img v-bind:src="image" alt="image here" />
-              </figure>
-            </div>
-          </div>
-
-          <div class="level-right">
-            <div class="level-item">
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
+  <div class="card">
+    <div class="card-content">
+      <div class="create-post">
+        <!-- form to create a new post needs image, message -->
+        <form @submit.prevent="sendPost" method="post">
+          <hr />
+          <br />
+          <div class="form-group">
+            <div class="level">
+              <div class="level-item">
+                <input
+                  type="text"
                   class="form-control"
-                  v-model="message"
-                  id="message"
-                  rows="3"
-                ></textarea>
+                  id="image"
+                  v-model="image"
+                  placeholder="Image URL"
+                />
+              </div>
+              <div class="level-item">
+                <figure class="image">
+                  <img v-bind:src="image" alt="image here" />
+                </figure>
+              </div>
+
+              <div class="level-item">
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea
+                    class="form-control"
+                    v-model="message"
+                    id="message"
+                    rows="3"
+                  ></textarea>
+                </div>
+
+                <br />
               </div>
             </div>
-            <br />
-          </div>
-        </div>
 
-        <!--div class="file has-name">
+            <!--div class="file has-name">
           <label class="file-label">
             <input class="file-input" type="file" name="resume" />
             <span class="file-cta">
@@ -52,92 +52,79 @@
             </span>
           </label>
         </div-->
-        <hr />
-        <div class="animalTypes">
-          <div class="btn-group">
-            <input
-              type="radio"
-              class="btn-check"
-              name="options"
-              v-model="animalTypes"
-              id="option1"
-              value="cat"
-              autocomplete="off"
-              checked
-            />
-            <label class="btn btn-color_cus" for="option1">Cat</label>
+            <hr />
+            <div class="level">
+              <div class="level-item">
+                <div class="animalTypes">
+                  <select class="select" v-model="animalTypes">
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
 
-            <input
-              type="radio"
-              class="btn-check"
-              name="options"
-              v-model="animalTypes"
-              value="dog"
-              id="option2"
-              autocomplete="off"
-            />
-            <label class="btn btn-color_cus" for="option2">Dog</label>
-
-            <input
-              type="radio"
-              class="btn-check"
-              name="options"
-              v-model="animalTypes"
-              value="other"
-              id="option3"
-              autocomplete="off"
-            />
-            <label class="btn btn-color_cus" for="option3">Other</label>
+              <div class="level-item">
+                <div class="postType">
+                  <select class="select" v-model="postType">
+                    <option value="have">Have</option>
+                    <option value="request">Request</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <hr />
+          <hr />
 
-      <!-- Button trigger modal -->
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-toggle="modal"
-        data-target="#exampleModal"
-      >
-        Preview
-      </button>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            Preview
+          </button>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Post Preview</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Post Preview</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">...</div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -148,6 +135,7 @@
 <script>
 import session from "../services/session.js";
 import { CreatePostHave } from "../services/havePosts.js";
+import { CreatePostRequest } from "../services/requestPosts.js";
 export default {
   data() {
     return {
@@ -155,6 +143,7 @@ export default {
       message: "",
       image: "https://via.placeholder.com/480",
       animalTypes: "",
+      postType: "",
     };
   },
   methods: {
@@ -164,12 +153,25 @@ export default {
       if (this.user_id === null) {
         this.user_id = 0;
       }
-      let response = CreatePostHave(
-        this.user_id,
-        this.message,
-        this.image,
-        this.animalTypes
-      );
+      let response;
+      if (this.postType === "have") {
+        response = CreatePostHave(
+          this.user_id,
+          this.message,
+          this.image,
+          this.animalTypes
+        );
+      } else if (this.postType === "request") {
+        response = CreatePostRequest(
+          this.user_id,
+          this.message,
+          this.image,
+          this.animalTypes
+        );
+      } else {
+        console.log("error");
+      }
+
       console.log(response);
       if (response !== null) {
         // success
@@ -188,6 +190,14 @@ export default {
 hr {
   border: 1px solid #ccc;
 }
+.card {
+  margin: auto;
+  border-radius: 15px;
+  background: rgba(242, 238, 253, 0.849);
+}
+.card-content {
+  margin: 2rem;
+}
 .create-post {
   width: 70%;
   margin: 0 auto;
@@ -203,8 +213,7 @@ hr {
   justify-content: center;
   align-items: center;
 }
-#message {
-}
+
 .animalTypes {
   display: flex;
   justify-content: center;
@@ -217,6 +226,10 @@ hr {
   padding: 1rem;
   margin-right: 0;
 }
-
+.postType {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @import "~bootstrap/dist/css/bootstrap.css";
 </style>

@@ -13,12 +13,50 @@ app.get('/have', (req, res) => {
             res.json(err)
         })
 });
+app.get('/have/user/:id', (req, res) => {
+
+    models.GetAllHavePostsByUser(req.params.id)
+        .then(posts => {
+            res.json(posts)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
 
 // get all request posts
 app.get('/request', (req, res) => {
     models.GetAllRequestPosts()
         .then(posts => {
             res.json(posts)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
+
+
+app.get('/request/user/:id', (req, res) => {
+    models.GetAllRequestPostsByUser(req.params.id)
+        .then(posts => {
+            res.json(posts)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
+
+// create a request post
+app.post('/request/newpost', (req, res) => {
+    let user_id = req.body.user_id;
+    let message = req.body.message;
+    let image = req.body.image;
+    let active = req.body.active;
+    let orgInterested = req.body.orgInterested;
+    let animalTypes = req.body.animalTypes;
+    models.CreateRequestPost(user_id, message, image, active, orgInterested, animalTypes)
+        .then(post => {
+            res.json(post)
         })
         .catch(err => {
             res.json(err)

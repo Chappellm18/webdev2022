@@ -17,7 +17,9 @@
       </div>
     </div>
     <div class="needs" v-else>
-      <postNeed />
+      <div v-for="post in posts_request" :key="post.id">
+        <postNeed :post="post" />
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +27,8 @@
 <script>
 import postHave from "../components/havePost.vue";
 import postNeed from "../components/requestPost.vue";
-import { GetAllPostHaves } from "../services/havePosts";
+import { GetAllPostHaves } from "../services/havePosts.js";
+import { GetAllPostRequests } from "../services/requestPosts.js";
 
 export default {
   components: {
@@ -36,7 +39,7 @@ export default {
     return {
       havesAct: true,
       posts_haves: [],
-      //posts_requests: [],
+      posts_requests: [],
     };
   },
   async mounted() {
@@ -47,7 +50,12 @@ export default {
         this.posts_haves.splice(this.posts_haves.indexOf(post), 1);
       }
     });
-    //this.posts_requests = await GetAllPostRequests();
+    this.posts_requests = await GetAllPostRequests();
+    this.posts_requests.forEach((post) => {
+      if (post.active != 1) {
+        this.posts_requests.splice(this.posts_requests.indexOf(post), 1);
+      }
+    });
   },
 };
 </script>

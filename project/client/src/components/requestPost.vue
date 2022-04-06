@@ -10,7 +10,7 @@
                   <figure class="image is-64x64">
                     <img
                       class="is-rounded is-64x64"
-                      src="https://bulma.io/images/placeholders/64x64.png"
+                      v-bind:src="post.image"
                       alt="Placeholder image"
                     />
                   </figure>
@@ -26,10 +26,7 @@
 
           <div class="message">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat
-              distinctio quis tenetur, ut dolores dignissimos odit dolorum
-              asperiores labore dolor esse deleniti nisi doloremque
-              necessitatibus quas, iusto nulla. Voluptas, iste!
+              {{ post.message }}
             </p>
           </div>
         </div>
@@ -53,7 +50,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>

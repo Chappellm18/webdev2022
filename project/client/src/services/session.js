@@ -1,6 +1,6 @@
 import router from '../router/index.js';
 import { Login } from './users.js';
-
+import { CheckOrgID } from './users.js'
 
 const session = {
     user: null,
@@ -13,6 +13,10 @@ const session = {
         // redirect page to home page
         router.push('/');
 
+    },
+    async GetOrgID(id) {
+        console.log("user_id:" + this.user.userID);
+        return await CheckOrgID(id);
     },
 }
 

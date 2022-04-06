@@ -23,3 +23,5 @@ Content-Type: application/json
         "message": "b"
     }
 
+###
+http://localhost:3100/posts/request/user/1

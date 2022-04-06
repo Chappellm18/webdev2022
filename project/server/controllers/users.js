@@ -16,6 +16,20 @@ app.get('/', (req, res) => {
         })
 });
 
+// check org for user_id
+app.get('/checkOrgs/:id', (req, res) => {
+    let id = req.params.id;
+
+    models.CheckOrgID(id)
+        .then(orgs => {
+            res.json(orgs)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
+
+
 // login
 app.post('/login', (req, res) => {
     models.Login(req.body.username, req.body.password)
