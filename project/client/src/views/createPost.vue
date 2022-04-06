@@ -61,6 +61,7 @@
               name="options"
               v-model="animalTypes"
               id="option1"
+              value="cat"
               autocomplete="off"
               checked
             />
@@ -70,6 +71,8 @@
               type="radio"
               class="btn-check"
               name="options"
+              v-model="animalTypes"
+              value="dog"
               id="option2"
               autocomplete="off"
             />
@@ -79,6 +82,8 @@
               type="radio"
               class="btn-check"
               name="options"
+              v-model="animalTypes"
+              value="other"
               id="option3"
               autocomplete="off"
             />

@@ -21,6 +21,37 @@
             <div class="level">
               <div class="level-left">
                 <div class="level-item">
+                  <div class="types">
+                    <div class="cat" v-if="post.animalTypes === 'cat'">
+                      <figure class="image is-64x64">
+                        <img
+                          class="is-64x64"
+                          src="../assets/cat.png"
+                          alt="Placeholder image"
+                        />
+                      </figure>
+                    </div>
+                    <div class="dog" v-else-if="post.animalTypes === 'dog'">
+                      <figure class="image is-128x128">
+                        <img
+                          class="is-64x64"
+                          src="../assets/dog.png"
+                          alt="Placeholder image"
+                        />
+                      </figure>
+                    </div>
+                    <div class="other" v-else>
+                      <figure class="image is-64x64">
+                        <img
+                          class="is-64x64"
+                          src="../assets/other.jpg"
+                          alt="Placeholder image"
+                        />
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+                <div class="level-item">
                   <h1>username</h1>
                 </div>
               </div>

@@ -41,6 +41,12 @@ export default {
   },
   async mounted() {
     this.posts_haves = await GetAllPostHaves();
+    // if the posts_haves.active != 1 then remove it from the array
+    this.posts_haves.forEach((post) => {
+      if (post.active != 1) {
+        this.posts_haves.splice(this.posts_haves.indexOf(post), 1);
+      }
+    });
     //this.posts_requests = await GetAllPostRequests();
   },
 };
