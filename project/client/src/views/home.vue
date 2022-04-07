@@ -73,7 +73,7 @@ section {
   width: 100%;
 }
 #welcontent {
-  background: rgba(200, 220, 242, 0.9);
+  background: #c4d6b0ea;
   border-radius: 25px;
   width: max-content;
   padding-left: 1rem;

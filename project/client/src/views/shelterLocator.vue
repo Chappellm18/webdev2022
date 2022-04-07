@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { GetAllLocations } from "../services/locations.js";
 export default {
   name: "App",
   data() {
@@ -84,7 +85,7 @@ export default {
       // take the input and convert it to its lat and long
       let lat;
       let long;
-      let q = "new york";
+      let q = "New Paltz";
       // TODO: get the user's location
 
       // fetch the geocoding api and get the lat and long
@@ -106,9 +107,42 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+
+      this.getShelters();
+    },
+    setMarker(address) {
+      let lat;
+      let long;
+      fetch(
+        `http://api.positionstack.com/v1/forward?access_key=${process.env.VUE_APP_ZIP_CODE_KEY}&query=${address}&output=json`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          //console.log(data);
+          lat = data.data[0].latitude;
+          long = data.data[0].longitude;
+          // set the center of the map to the lat and long
+
+          // add the marker to the map
+          this.markers.push({
+            position: { lat: lat, lng: long },
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     getShelters() {
       // this method will get the locations from all the shelters within the radius and display them as markers on the map
+      // locations are stored in the orgs table under location
+      // with the location (street address) get the lat and long and add to an array of markers
+      let orgs = GetAllLocations();
+      orgs.then((data) => {
+        //console.log(data);
+        data.forEach((org) => {
+          this.setMarker(org.location);
+        });
+      });
     },
   },
 };

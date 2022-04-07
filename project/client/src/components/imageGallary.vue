@@ -6,13 +6,22 @@
           <figure class="image">
             <img src="../assets/holder3.jpg" alt="" />
           </figure>
+          <p class="content">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
+            officiis sapiente reiciendis odio. Voluptatem mollitia dolorem.
+          </p>
         </div>
       </div>
+
       <div class="level-item">
         <div class="image">
           <figure class="image">
             <img src="../assets/holder1.jpg" alt="" />
           </figure>
+          <p class="content">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
+            officiis sapiente reiciendis odio. Voluptatem mollitia dolorem.
+          </p>
         </div>
       </div>
       <div class="level-item">
@@ -20,6 +29,10 @@
           <figure class="image">
             <img src="../assets/holder2.jpg" alt="" />
           </figure>
+          <p class="content">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
+            officiis sapiente reiciendis odio. Voluptatem mollitia dolorem.
+          </p>
         </div>
       </div>
     </div>
@@ -39,8 +52,21 @@ export default {};
 }
 .image {
   width: 45rem;
+  max-height: 35rem;
 }
-.image:hover {
-  opacity: 0.5;
+p {
+  color: #381d2a;
+}
+.content {
+  display: none;
+  z-index: 1;
+  position: relative;
+  top: -20rem;
+  background: #ba56243e;
+  padding: 5rem;
+}
+.image:hover + .content {
+  display: block;
+  z-index: 1;
 }
 </style>

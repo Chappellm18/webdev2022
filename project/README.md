@@ -3,3 +3,8 @@
 
 # Site will be available at:
 ```http://localhost:3100
+
+# Temp account:
+```username: a
+```password: a
+```

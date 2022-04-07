@@ -13,6 +13,7 @@ const bodyPaser = require('body-parser');
 
 const userController = require('./controllers/users.js');
 const postController = require('./controllers/posts.js');
+const locationController = require('./controllers/locations.js');
 const { Router } = require('express');
 
 app
@@ -24,6 +25,7 @@ app
     .use(express.static(path.join(__dirname, '../docs/')))
     .use('/users', userController)
     .use('/posts', postController)
+    .use('/locations', locationController)
     .use(bodyPaser.json())
 
 

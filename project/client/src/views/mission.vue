@@ -8,12 +8,7 @@
 
     <div class="text">
       <h1>Mission</h1>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero aliquam
-        sit exercitationem magnam debitis enim doloremque. Perferendis hic
-        dignissimos doloremque fugiat expedita consequatur placeat, rerum ad
-        modi exercitationem incidunt quas.
-      </p>
+      <p>Our mission is to help those who have not found their forever home</p>
     </div>
 
     <div class="more-info">
@@ -65,6 +60,7 @@ export default {
   justify-content: center;
   width: 90%;
   top: 5rem;
+  margin-bottom: 5rem;
 }
 .text {
   display: flex;
