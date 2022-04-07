@@ -20,16 +20,36 @@
       </form>
     </div>
 
-    <GMapMap class="map" :center="center" :zoom="14" map-type-id="roadmap">
+    <GMapMap
+      class="map"
+      v-bind:center="center"
+      :zoom="15"
+      map-type-id="roadmap"
+    >
       <GMapCluster>
         <GMapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
+          :key="marker.id"
+          v-for="marker in markers"
+          :position="marker.position"
           :clickable="true"
           :draggable="true"
-          @click="center = m.position"
-        />
+          :icon="{
+            url: require('../assets/paw.png'),
+            scaledSize: {
+              width: 75,
+              height: 75,
+            },
+          }"
+          @click="openMarker(marker.id)"
+        >
+          <GMapInfoWindow
+            :closeclick="true"
+            @closeclick="openMarker(null)"
+            :opened="openedMarkerID === marker.id"
+          >
+            <div>{{ marker.orgName }}</div>
+          </GMapInfoWindow>
+        </GMapMarker>
       </GMapCluster>
     </GMapMap>
   </section>
@@ -41,9 +61,12 @@ export default {
   name: "App",
   data() {
     return {
+      openedMarkerID: null,
       center: { lat: -47, lng: -47 },
       markers: [
         {
+          id: 0,
+          orgName: "Center",
           position: {
             lat: 47,
             lng: 47,
@@ -57,6 +80,9 @@ export default {
     this.loadInit();
   },
   methods: {
+    openMarker(id) {
+      this.openedMarkerID = id;
+    },
     search() {
       // take the input and convert it to its lat and long
       let lat;
@@ -110,7 +136,7 @@ export default {
 
       this.getShelters();
     },
-    setMarker(address) {
+    setMarker(id, orgName, address) {
       let lat;
       let long;
       fetch(
@@ -125,6 +151,8 @@ export default {
 
           // add the marker to the map
           this.markers.push({
+            id: id,
+            orgName: orgName,
             position: { lat: lat, lng: long },
           });
         })
@@ -136,11 +164,15 @@ export default {
       // this method will get the locations from all the shelters within the radius and display them as markers on the map
       // locations are stored in the orgs table under location
       // with the location (street address) get the lat and long and add to an array of markers
+
+      /////// change this function to get the whole org
+
       let orgs = GetAllLocations();
       orgs.then((data) => {
         //console.log(data);
         data.forEach((org) => {
-          this.setMarker(org.location);
+          console.log(org);
+          this.setMarker(org.orgID, org.orgName, org.location);
         });
       });
     },

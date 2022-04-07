@@ -11,10 +11,10 @@ module.exports.GetAllLocations = function GetAllLocations() {
                 // return an array of each org's location
                 let org_locations = []
                 for (let i = 0; i < results.length; i++) {
-                    org_locations.push(results[i].location)
+                    org_locations.push(results[i])
                 }
 
-                resolve(org_locations)
+                resolve(results)
             }
         })
     })
