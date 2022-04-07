@@ -68,12 +68,12 @@ section {
   color: #381d2a;
 }
 #welcome {
-  background-image: url("../assets/welcomeBG.jpg");
+  background-image: url("../assets/welcomeBG.png");
   background-size: cover;
   width: 100%;
 }
 #welcontent {
-  background: #c4d6b0ea;
+  background: #ffffffea;
   border-radius: 25px;
   width: max-content;
   padding-left: 1rem;

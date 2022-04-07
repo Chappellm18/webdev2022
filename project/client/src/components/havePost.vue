@@ -44,7 +44,7 @@
                       <figure class="image is-64x64">
                         <img
                           class="is-64x64"
-                          src="../assets/other.jpg"
+                          src="../assets/other.png"
                           alt="Placeholder image"
                         />
                       </figure>

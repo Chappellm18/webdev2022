@@ -171,7 +171,7 @@ export default {
       orgs.then((data) => {
         //console.log(data);
         data.forEach((org) => {
-          console.log(org);
+          //console.log(org);
           this.setMarker(org.orgID, org.orgName, org.location);
         });
       });
