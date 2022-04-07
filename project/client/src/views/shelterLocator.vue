@@ -43,11 +43,35 @@
           @click="openMarker(marker.id)"
         >
           <GMapInfoWindow
+            style="overflow: hidden"
             :closeclick="true"
             @closeclick="openMarker(null)"
             :opened="openedMarkerID === marker.id"
           >
-            <div>{{ marker.orgName }}</div>
+            <div class="card">
+              <div class="row">
+                <div class="col">
+                  <img :src="marker.logo" class="card-img-top" alt="..." />
+                </div>
+                <div class="col">
+                  {{ marker.orgName }}
+                  <br />
+                  {{ marker.address }}
+                  <br />
+                  {{ marker.phone }}
+                  <br />
+                  {{ marker.email }}
+                  <br />
+                  {{ marker.hours }}
+                </div>
+              </div>
+
+              <div class="card-body">
+                <p class="card-text">
+                  {{ marker.statement }}
+                </p>
+              </div>
+            </div>
           </GMapInfoWindow>
         </GMapMarker>
       </GMapCluster>
@@ -67,6 +91,12 @@ export default {
         {
           id: 0,
           orgName: "Center",
+          logo: "https://via.placeholder.com/150",
+          address: "123 Main St",
+          phone: "123-456-7890",
+          email: "@gmail.com",
+          hours: "9am-5pm",
+          statement: "This is a statement",
           position: {
             lat: 47,
             lng: 47,
@@ -136,7 +166,7 @@ export default {
 
       this.getShelters();
     },
-    setMarker(id, orgName, address) {
+    setMarker(id, orgName, logo, address, phone, email, hours, statement) {
       let lat;
       let long;
       fetch(
@@ -153,6 +183,12 @@ export default {
           this.markers.push({
             id: id,
             orgName: orgName,
+            logo: logo,
+            address: address,
+            phone: phone,
+            email: email,
+            hours: hours,
+            statement: statement,
             position: { lat: lat, lng: long },
           });
         })
@@ -172,7 +208,16 @@ export default {
         //console.log(data);
         data.forEach((org) => {
           //console.log(org);
-          this.setMarker(org.orgID, org.orgName, org.location);
+          this.setMarker(
+            org.orgID,
+            org.orgName,
+            org.logo,
+            org.location,
+            org.phone,
+            org.email,
+            org.hours,
+            org.missionStatement
+          );
         });
       });
     },
