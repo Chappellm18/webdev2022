@@ -17,10 +17,10 @@ app.get('/', (req, res) => {
 });
 
 // check org for user_id
-app.get('/checkOrgs/:id', (req, res) => {
-    let id = req.params.id;
+app.get('/checkOrg/', (req, res) => {
 
-    models.CheckOrgID(id)
+
+    models.CheckOrg()
         .then(orgs => {
             res.json(orgs)
         })

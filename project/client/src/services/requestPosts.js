@@ -5,7 +5,7 @@ export async function GetAllPostRequests() {
     return await api('posts/request/', null, 'GET');
 }
 //get posts requests made by user_id
-export async function GetRequestPostsByUserID(user_id) {
+export async function GetRequestPostsByOrgID(user_id) {
     return await api('posts/request/user/' + user_id, null, 'GET');
 }
 

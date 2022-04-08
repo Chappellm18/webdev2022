@@ -4,27 +4,15 @@ let { connection } = require('./database.js')
 
 
 // check if user is in org
-module.exports.CheckOrgID = async function CheckOrgID(user_id) {
+module.exports.CheckOrg = async function CheckOrg() {
     return new Promise((resolve, reject) => {
         // check each row in orgs to see if user_id is in linkedUsers column
         connection.query('SELECT * FROM `web-dev`.`orgs`', function (err, results) {
             if (err) {
                 reject(err)
-            } else {
-                let orgs;
-                // if user_id is in linkedUsers column, return org_id
-                for (let i = 0; i < results.length; i++) {
-                    orgs = results[i].linkedUsers.split(',');
-                    orgs.forEach(id => {
-                        if (id === user_id) {
-
-                            resolve(results[i].orgID)
-                        }
-                    });
-                }
-                resolve(null)
-                // if user_id is not in linkedUsers column, return null
-
+            }
+            else {
+                resolve(results)
             }
         })
     })

@@ -37,7 +37,7 @@ app.get('/request', (req, res) => {
 
 
 app.get('/request/user/:id', (req, res) => {
-    models.GetAllRequestPostsByUser(req.params.id)
+    models.GetAllRequestPostsByOrg(req.params.id)
         .then(posts => {
             res.json(posts)
         })

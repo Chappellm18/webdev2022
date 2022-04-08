@@ -43,10 +43,10 @@ module.exports.GetAllHavePostsByUser = function GetAllHavePostsByUser(user_id) {
 }
 
 //get all request posts by user id
-module.exports.GetAllRequestPostsByUser = function GetAllRequestPostsByUser(user_id) {
+module.exports.GetAllRequestPostsByOrg = function GetAllRequestPostsByUser(user_id) {
     // return all posts from database which has user_id
     return new Promise((resolve, reject) => {
-        connection.query('SELECT * FROM `web-dev`.`requestpost` WHERE `orgID` = ?', user_id, function (err, results) {
+        connection.query('SELECT * FROM `web-dev`.`requestpost` WHERE `orgID` = ' + user_id, function (err, results) {
             if (err) {
                 reject(err)
             } else {
