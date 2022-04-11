@@ -3,7 +3,9 @@
     <div id="nav">
       <navBar />
     </div>
-    <router-view />
+    <div class="view">
+      <router-view />
+    </div>
 
     <div class="foot">
       <ft />
@@ -25,6 +27,14 @@ export default {
 
 <style>
 #app {
-  background: #c4d6b0;
+  background: #9fb5b1;
+}
+.view {
+  position: relative;
+  top: 5rem;
+}
+.foot {
+  position: relative;
+  top: 5rem;
 }
 </style>

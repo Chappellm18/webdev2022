@@ -31,37 +31,44 @@
       :class="{ 'is-active': navBarIsActive }"
     >
       <div class="navbar-start">
-        <a class="navbar-item nb-h"
-          ><router-link to="/"> Home </router-link>
+        <a class="navbar-item"
+          ><router-link to="/" class="nb-h"> Home </router-link>
         </a>
 
-        <a class="navbar-item nb-h"
-          ><router-link to="/shelterLocator"> Find A Shelter </router-link>
+        <a class="navbar-item"
+          ><router-link to="/shelterLocator" class="nb-h">
+            Find A Shelter
+          </router-link>
         </a>
 
-        <a class="navbar-item nb-h"
-          ><router-link to="/share"> Share </router-link>
+        <a class="navbar-item"
+          ><router-link to="/share" class="nb-h"> Share </router-link>
         </a>
 
-        <a class="navbar-item nb-h"
-          ><router-link to="/mission"> Mission </router-link>
+        <a class="navbar-item"
+          ><router-link to="/mission" class="nb-h"> Mission </router-link>
         </a>
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons" v-if="!logged">
+        <div v-if="!logged">
+          <div class="navbar-item">
             <a class="button" id="sg"
               ><router-link to="/signup">
                 <strong>Sign up</strong>
               </router-link>
             </a>
-            <a class="button is-light" id="lg"
+
+            <a class="button" id="lg"
               ><router-link to="/login"> Log in </router-link>
             </a>
           </div>
-          <div class="profileBadge" v-else>
-            <profileNavbar />
+        </div>
+        <div v-else>
+          <div class="navbar-item">
+            <div class="profileBadge">
+              <profileNavbar />
+            </div>
           </div>
         </div>
       </div>
@@ -98,23 +105,26 @@ export default {
 
 <style scoped>
 .navbar {
-  background: #fcde9c;
+  background: #809daa;
 }
 .nb-h {
-  color: #381d2a;
+  color: #1e1e26;
 }
-.nb-h:hover {
-  background: #ffa652d2;
+.navbar-item:hover {
+  background: #908d8d;
 }
 .nb-h:visited {
-  color: #381d2a;
+  color: #1e1e26;
 }
 #sg {
-  background: #ffa552;
-  color: #381d2a;
+  background: #f9f9f8;
+  color: #1e1e26;
+  border: none;
 }
 #lg {
-  background: #c4d6b0;
-  color: #381d2a;
+  background: #1e1e26;
+  color: #f9f9f8;
+  border: none;
+  margin-left: 1rem;
 }
 </style>

@@ -94,7 +94,12 @@ section {
   align-items: left;
 }
 #mission {
-  color: #381d2a;
+  width: 100%;
+  color: #9fb5b1;
+  background: #1e1e26;
+}
+#mission h1 {
+  color: #9fb5b1;
 }
 .content {
   text-align: center;

@@ -3,11 +3,8 @@
     <div class="level">
       <div class="level-left">
         <div class="level-item">
-          <figure>
-            <img
-              src="https://bulma.io/images/placeholders/128x128.png"
-              alt=""
-            />
+          <figure class="image is-128x128">
+            <img v-bind:src="Session.user.userImage" alt="" />
           </figure>
         </div>
         <div class="level-item">
@@ -18,7 +15,152 @@
         </div>
       </div>
       <div class="level-right">
-        <div class="level-item"></div>
+        <div class="level-item">
+          <!-- edit profile modal -->
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Edit Profile
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Edit Profile
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col">
+                                <figure class="image is-rounded is-128x128">
+                                  <img
+                                    v-bind:src="this.Session.user.userImage"
+                                    alt=""
+                                  />
+                                </figure>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="input-group mb-3">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Username"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Username"
+                              aria-label="Username"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Username"
+                              aria-label="Username"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Username"
+                              aria-label="Username"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Username"
+                              aria-label="Username"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Username"
+                              aria-label="Username"
+                              aria-describedby="basic-addon1"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="posts">
@@ -78,24 +220,31 @@ export default {
         if (orgID[i] !== null) {
           let linked = orgID[i].linkedUsers;
           let id = orgID[i].orgID;
+
           if (linked !== null) {
             linked = linked.split(",");
+
             for (let j = 0; j < linked.length; j++) {
-              if (linked[j] === this.user_id) {
+              if (linked[j] == this.Session.user.userID) {
                 // if the user is in the org then get the requests
-                this.posts_request = await GetRequestPostsByOrgID(id);
-                break;
+                let posts = await GetRequestPostsByOrgID(id);
+
+                // add the array posts to this.posts_request
+                posts.forEach((post) => {
+                  this.posts_request.push(post);
+                });
               }
             }
           }
         }
       }
+      console.log(this.posts_request);
 
       if (this.posts_request != null) {
         this.orgPosts = true;
         this.posts_request.forEach((post) => {
           if (post.active != 1) {
-            this.posts_request.splice(this.posts_requests.indexOf(post), 1);
+            this.posts_request.splice(this.posts_request.indexOf(post), 1);
           }
         });
       } else {
@@ -113,7 +262,10 @@ export default {
 <style scoped>
 .profile {
   width: 70%;
+
   margin: 0 auto;
-  margin-top: 3rem;
+}
+.modal {
+  z-index: 9999;
 }
 </style>
