@@ -10,15 +10,11 @@
       </div>
     </section>
 
-    <section class="section">
-      <image-gallary />
-    </section>
-
     <section id="mission" class="section is-medium">
       <div class="content">
-        <div class="level">
-          <div class="level-right">
-            <div class="level-item" id="missionText">
+        <div class="contianer">
+          <div class="row">
+            <div class="level-col" id="missionText">
               <h1>Mission</h1>
               <p>
                 Our mission is to help those who have not found their forever
@@ -26,15 +22,12 @@
               </p>
             </div>
           </div>
-          <div class="level-left">
-            <div class="level-item">
-              <figure class="image">
-                <img src="../assets/holder3.jpg" alt="" />
-              </figure>
-            </div>
-          </div>
         </div>
       </div>
+    </section>
+
+    <section class="section">
+      <image-gallary />
     </section>
 
     <section id="vision" class="section is-large">
@@ -60,6 +53,7 @@ export default {
 section {
   margin: 4rem;
 }
+
 .homepage {
   display: flex;
   flex-direction: column;
