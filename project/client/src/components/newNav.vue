@@ -31,21 +31,21 @@
       :class="{ 'is-active': navBarIsActive }"
     >
       <div class="navbar-start">
-        <a class="navbar-item"
+        <a class="navbar-item nb-h"
           ><router-link to="/" class="nb-h"> Home </router-link>
         </a>
 
-        <a class="navbar-item"
+        <a class="navbar-item nb-h"
           ><router-link to="/shelterLocator" class="nb-h">
             Find A Shelter
           </router-link>
         </a>
 
-        <a class="navbar-item"
+        <a class="navbar-item nb-h"
           ><router-link to="/share" class="nb-h"> Share </router-link>
         </a>
 
-        <a class="navbar-item"
+        <a class="navbar-item nb-h"
           ><router-link to="/mission" class="nb-h"> Mission </router-link>
         </a>
       </div>
@@ -109,8 +109,9 @@ export default {
 }
 .nb-h {
   color: #1e1e26;
+  text-decoration: none;
 }
-.navbar-item:hover {
+.nb-h:hover {
   background: #908d8d;
 }
 .nb-h:visited {
@@ -126,5 +127,8 @@ export default {
   color: #f9f9f8;
   border: none;
   margin-left: 1rem;
+}
+.navbar-end {
+  margin-right: 3rem;
 }
 </style>

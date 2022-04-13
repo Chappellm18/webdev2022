@@ -8,7 +8,6 @@ import VueGoogleMaps from '@fawmi/vue-google-maps'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
-require('./assets/main.scss');
 
 const app = createApp(App);
 

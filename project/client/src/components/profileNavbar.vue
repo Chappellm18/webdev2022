@@ -1,19 +1,10 @@
 <template>
-  <div class="columns" id="profile-badge">
-    <div class="column">
-      {{ Session.user.username }}
-    </div>
-    <div class="column">
-      <figure class="image">
-        <a
-          ><router-link to="/profile"
-            ><img
-              class="avatar is-rounded"
-              v-bind:src="Session.user.userImage"
-              alt="" /></router-link
-        ></a>
-      </figure>
-    </div>
+  <div>
+    {{ Session.user.username }}
+
+    <router-link to="/profile"
+      ><img v-bind:src="Session.user.userImage" alt=""
+    /></router-link>
   </div>
 </template>
 
@@ -29,4 +20,15 @@ export default {
 </script>
 
 <style scoped>
+div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  margin-left: 2rem;
+  scale: 2;
+  border-radius: 50%;
+}
 </style>
