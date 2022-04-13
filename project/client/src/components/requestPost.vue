@@ -10,7 +10,7 @@
                   <figure class="image is-64x64">
                     <img
                       class="is-rounded is-64x64"
-                      v-bind:src="post.image"
+                      v-bind:src="user_data"
                       alt="Placeholder image"
                     />
                   </figure>
@@ -18,7 +18,7 @@
               </div>
               <div class="level-right">
                 <div class="level-item">
-                  <h1>username</h1>
+                  <h1>{{ user_data }}</h1>
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@
           <figure class="image">
             <img
               class="post-img"
-              src="https://bulma.io/images/placeholders/480x480.png"
+              v-bind:src="post.image"
               alt="Placeholder image"
             />
           </figure>
@@ -50,12 +50,21 @@
 </template>
 
 <script>
+import { GetUserById } from "../services/users.js";
 export default {
+  data() {
+    return {
+      user_data: [],
+    };
+  },
   props: {
     post: {
       type: Object,
       required: true,
     },
+  },
+  async mounted() {
+    this.user_data = await GetUserById(this.post.user_id);
   },
 };
 </script>

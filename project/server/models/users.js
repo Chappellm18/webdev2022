@@ -3,6 +3,24 @@
 let { connection } = require('./database.js')
 
 
+// get user by id
+module.exports.GetUserById = async function GetUserById(id) {
+    // get user by id
+    let sql = "SELECT username, userImage FROM `web-dev`.`users` WHERE userID = '" + id + "'";
+    //console.log(sql);
+    // return user
+    return new Promise((resolve, reject) => {
+        connection.query(sql, function (err, results) {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(results)
+            }
+        })
+    })
+}
+
 // check if user is in org
 module.exports.CheckOrg = async function CheckOrg() {
     return new Promise((resolve, reject) => {

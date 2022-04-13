@@ -1,5 +1,12 @@
 import { api } from './index.js';
 
+
+
+export async function GetUserById(id) {
+    return await api('users/' + id, null, 'GET');
+}
+
+
 //check if user is in an org if yes return the orgid
 export async function CheckOrg() {
 

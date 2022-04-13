@@ -16,6 +16,14 @@ app.get('/', (req, res) => {
         })
 });
 
+// get user by id
+app.get('/:id', (req, res) => {
+    models.GetUserById(req.params.id)
+        .then(user => { res.json(user) })   // send user back to client
+        .catch(err => { res.json(err) })    // send error back to client
+});
+
+
 // check org for user_id
 app.get('/checkOrg/', (req, res) => {
 
