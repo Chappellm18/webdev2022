@@ -94,6 +94,7 @@
 
 <script>
 import { AddUser } from "../services/users.js";
+import router from "../router/index.js";
 export default {
   data() {
     return {
@@ -124,6 +125,7 @@ export default {
       this.password = "";
       this.message = "";
       this.role = "";
+      router.push("/login");
     },
   },
 };

@@ -6,12 +6,20 @@ export async function GetUserById(id) {
     return await api('users/' + id, null, 'GET');
 }
 
+// update user password
+export async function UpdateUserPassword(id, password) {
+    return await api('users/' + id + '/password', password, 'PUT');
+}
+
+// delete current user
+export async function DeleteUser(id) {
+    return await api('users/delete/' + id, null, 'DELETE');
+}
+
 
 //check if user is in an org if yes return the orgid
-export async function CheckOrg() {
-
-
-    return await api('users/checkOrg/', null, 'GET');
+export async function GetAllOrgs() {
+    return await api('users/orgs/', null, 'GET');
 }
 
 

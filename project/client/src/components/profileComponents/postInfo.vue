@@ -19,6 +19,7 @@
 import postHave from "../havePost.vue";
 import postNeed from "../requestPost.vue";
 import Session from "../../services/session.js";
+import { GetAllOrgs } from "../../services/users.js";
 import { GetRequestPostsByOrgID } from "../../services/requestPosts.js";
 import { GetHavePostsByUserID } from "../../services/havePosts.js";
 export default {
@@ -46,15 +47,16 @@ export default {
 
     // check if user is in an organization
     if (this.Session.user.role === "Organization") {
+      this.orgPosts = true;
       // get the orgs ID
       // check the linkedUsers in the orgs to see if the current user_id is in one
-      let orgID = await this.Session.GetOrg();
-
+      let org = await GetAllOrgs();
+      console.log(org);
       // loop through each org and check if the user is in the org
-      for (let i = 0; i < orgID.length; i++) {
-        if (orgID[i] !== null) {
-          let linked = orgID[i].linkedUsers;
-          let id = orgID[i].orgID;
+      for (let i = 0; i < org.length; i++) {
+        if (org[i] !== null) {
+          let linked = org[i].linkedUsers;
+          let id = org[i].orgID;
 
           if (linked !== null) {
             linked = linked.split(",");
@@ -73,10 +75,9 @@ export default {
           }
         }
       }
-      //console.log(this.posts_request);
+      console.log(this.posts_request);
 
       if (this.posts_request != null) {
-        this.orgPosts = true;
         this.posts_request.forEach((post) => {
           if (post.active != 1) {
             this.posts_request.splice(this.posts_request.indexOf(post), 1);

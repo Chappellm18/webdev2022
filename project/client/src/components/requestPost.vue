@@ -10,7 +10,7 @@
                   <figure class="image is-64x64">
                     <img
                       class="is-rounded is-64x64"
-                      v-bind:src="user_data"
+                      v-bind:src="user_data.userImage"
                       alt="Placeholder image"
                     />
                   </figure>
@@ -18,7 +18,7 @@
               </div>
               <div class="level-right">
                 <div class="level-item">
-                  <h1>{{ user_data }}</h1>
+                  <h1>{{ user_data.username }}</h1>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@ import { GetUserById } from "../services/users.js";
 export default {
   data() {
     return {
-      user_data: [],
+      user_data: {},
     };
   },
   props: {

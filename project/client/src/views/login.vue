@@ -10,6 +10,7 @@
               type="text"
               placeholder="Username"
               v-model="username"
+              required
             />
           </div>
         </div>
@@ -22,6 +23,7 @@
               type="password"
               placeholder="Password"
               v-model="password"
+              required
             />
           </div>
         </div>

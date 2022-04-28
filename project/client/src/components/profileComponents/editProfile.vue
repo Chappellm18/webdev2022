@@ -50,8 +50,9 @@
                             <input
                               type="text"
                               class="form-control"
-                              placeholder="Username"
-                              aria-label="Username"
+                              placeholder="image link"
+                              v-model="image"
+                              aria-label="Profile Image"
                               aria-describedby="basic-addon1"
                             />
                           </div>
@@ -64,6 +65,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Username"
+                        v-model="username"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
                       />
@@ -76,8 +78,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Username"
-                        aria-label="Username"
+                        placeholder="email"
+                        v-model="email"
+                        aria-label="email"
                         aria-describedby="basic-addon1"
                       />
                     </div>
@@ -89,37 +92,20 @@
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Username"
-                        aria-label="Username"
+                        placeholder="message"
+                        v-model="message"
+                        aria-label="message"
                         aria-describedby="basic-addon1"
                       />
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col">
-                    <div class="input-group mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Username"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="input-group mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Username"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      />
-                    </div>
+                    <button class="btn" data-bs-dismiss="modal">
+                      <router-link to="reset">Reset Password</router-link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -136,6 +122,13 @@
             <button type="submit" form="editForm" class="btn btn-primary">
               Save changes
             </button>
+            <button
+              @click="delUser()"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Delete Account
+            </button>
           </div>
         </div>
       </div>
@@ -145,11 +138,33 @@
 
 <script>
 import Session from "../../services/session.js";
+import { DeleteUser } from "../../services/users.js";
+import router from "../../router/index.js";
 export default {
   data() {
     return {
       Session,
+      username: "",
+      email: "",
+      message: "",
+      image: "",
     };
+  },
+  methods: {
+    delUser() {
+      // display a popup to confirm delete
+      // if confirmed, delete user
+      // if not, do nothing
+      if (confirm("Are you sure you want to delete your account?")) {
+        // delete user from database
+        // remove session
+        // redirect to sign up page
+        DeleteUser(this.Session.user.userID);
+        router.push("/signup");
+      } else {
+        // do nothing
+      }
+    },
   },
 };
 </script>

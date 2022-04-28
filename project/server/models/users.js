@@ -15,17 +15,17 @@ module.exports.GetUserById = async function GetUserById(id) {
                 reject(err)
             }
             else {
-                resolve(results)
+                resolve(results[0], results[1])
             }
         })
     })
 }
 
-// check if user is in org
-module.exports.CheckOrg = async function CheckOrg() {
+// Get all orgs from the orgs db
+module.exports.GetAllOrgs = function GetAllOrgs() {
+    //return all orgs from mySQL db
     return new Promise((resolve, reject) => {
-        // check each row in orgs to see if user_id is in linkedUsers column
-        connection.query('SELECT * FROM `web-dev`.`orgs`', function (err, results) {
+        connection.query("SELECT * FROM `web-dev`.`orgs`", function (err, results) {
             if (err) {
                 reject(err)
             }
@@ -50,20 +50,38 @@ module.exports.GetAllUsers = function GetAllUsers() {
     })
 }
 
+// update user password
+module.exports.UpdateUserPassword = async function UpdateUserPassword(id, password) {
+    // update user password
+    let sql = "UPDATE `web-dev`.`users` SET password = '" + password + "' WHERE userID = '" + id + "'";
+    //console.log(sql);
+    // return user
+    return new Promise((resolve, reject) => {
+        connection.query(sql, function (err, results) {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(results)
+            }
+        })
+    })
+}
+
+
 
 // Add a user to the db
 module.exports.AddUser = async function AddUser(name, username, password, email, role, message) {
     // add a user to the mySQL db
-    let sql = "INSERT INTO `web-dev`.`users` VALUES ('" + name + "', '" + username + "', '" + password + "', '" + email + "', '" + role + "', '" + message + "')";
+    let sql = "INSERT INTO `web-dev`.`users` VALUES (DEFAULT, '" + name + "', '" + username + "', '" + password + "', '" + email + "', '" + role + "', '" + message + "', DEFAULT)";
     //console.log(sql);
     // add user with slq query to the mySQL db
     return new Promise((resolve, reject) => {
         connection.query(sql, function (err, results) {
             if (err) {
-
+                console.log(err);
                 reject(err)
             } else {
-
                 resolve(results)
             }
         })
@@ -74,7 +92,7 @@ module.exports.AddUser = async function AddUser(name, username, password, email,
 // login function
 module.exports.Login = async function Login(username, password) {
     // check if username exists in db
-    let sql = "SELECT * FROM `web-dev`.`users` WHERE username = '" + username + "'";
+    let sql = "SELECT * FROM `web-dev`.`users` WHERE username = '" + username + "' LIMIT 1";
     //console.log(sql);
     // check if password matches users password and return the user
     return new Promise((resolve, reject) => {
@@ -84,16 +102,27 @@ module.exports.Login = async function Login(username, password) {
             }
             else {
                 if (results.length > 0) {
-                    if (results[0].password == password) {
+                    if (password === results[0].password) {
                         resolve(results[0])
                     }
-                    else {
-                        reject("Wrong password")
-                    }
                 }
-                else {
-                    reject("User not found")
-                }
+            }
+        })
+    })
+}
+
+module.exports.DeleteUser = async function DeleteUser(id) {
+    // delete user from db
+    let sql = "DELETE FROM `web-dev`.`users` WHERE userID = '" + id + "'";
+    //console.log(sql);
+    // return user
+    return new Promise((resolve, reject) => {
+        connection.query(sql, function (err, results) {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(results)
             }
         })
     })

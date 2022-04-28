@@ -69,6 +69,7 @@
             <div class="profileBadge">
               <profileNavbar />
             </div>
+            <div class="button" id="logout" @click="logout()">Log Out</div>
           </div>
         </div>
       </div>
@@ -94,6 +95,11 @@ export default {
         this.logged = true;
       }
     },
+    logout() {
+      // log the user out
+      this.Session.logout();
+      this.logged = false;
+    },
   },
   mounted() {
     setInterval(() => {
@@ -104,6 +110,9 @@ export default {
 </script>
 
 <style scoped>
+#logout {
+  margin-left: 4rem;
+}
 .navbar {
   background: #809daa;
 }

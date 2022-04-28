@@ -15,6 +15,16 @@ app.get('/', (req, res) => {
             res.json(err)
         })
 });
+// get all orgs
+app.get('/orgs', (req, res) => {
+    models.GetAllOrgs()
+        .then(org => {
+            // return the data as an array of objects
+
+            res.json(org)
+        })   // send orgs back to client
+        .catch(err => { res.json(err) })    // send error back to client
+});
 
 // get user by id
 app.get('/:id', (req, res) => {
@@ -23,19 +33,15 @@ app.get('/:id', (req, res) => {
         .catch(err => { res.json(err) })    // send error back to client
 });
 
-
-// check org for user_id
-app.get('/checkOrg/', (req, res) => {
-
-
-    models.CheckOrg()
-        .then(orgs => {
-            res.json(orgs)
-        })
-        .catch(err => {
-            res.json(err)
-        })
+//update user password
+app.put('/:id/password', (req, res) => {
+    models.UpdateUserPassword(req.params.id, req.body)
+        .then(user => { res.json(user) })   // send user back to client
+        .catch(err => { res.json(err) })    // send error back to client
 });
+
+
+
 
 
 // login
@@ -60,6 +66,16 @@ app.post('/add', (req, res) => {
     let message = req.body.message;
     // add user to the mySQL db
     models.AddUser(name, username, password, email, role, message)
+        .then(user => {
+            res.json(user)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
+
+app.delete('/delete/:id', (req, res) => {
+    models.DeleteUser(req.params.id)
         .then(user => {
             res.json(user)
         })
