@@ -16,6 +16,10 @@ export async function DeleteUser(id) {
     return await api('users/delete/' + id, null, 'DELETE');
 }
 
+// get org by id
+export async function GetOrgById(id) {
+    return await api('users/orgs/' + id, null, 'GET');
+}
 
 //check if user is in an org if yes return the orgid
 export async function GetAllOrgs() {

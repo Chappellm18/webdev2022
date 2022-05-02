@@ -1,80 +1,47 @@
 <template>
-  <div class="post">
-    <div class="level">
-      <div class="level-left">
-        <div class="post-image">
-          <!-- v-if post has image -->
-          <figure class="image">
+  <div class="card">
+    <div class="card-header">
+      <h1>{{ user_data.username }}</h1>
+      <img class="" v-bind:src="user_data.userImage" alt="Placeholder image" />
+    </div>
+    <img v-bind:src="post.image" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <p class="card-text">
+        {{ post.message }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <div class="types">
+        <div class="cat" v-if="post.animalTypes === 'cat'">
+          <figure class="image is-64x64">
             <img
-              class="post-img"
-              v-bind:src="post.image"
+              class="is-64x64"
+              src="../assets/cat.png"
               alt="Placeholder image"
             />
           </figure>
         </div>
-        <!-- v-else  -->
-        <div class="no-image"></div>
-      </div>
-      <div class="level-right">
-        <div class="post-body">
-          <div class="user">
-            <div class="level">
-              <div class="level-left">
-                <div class="level-item">
-                  <div class="types">
-                    <div class="cat" v-if="post.animalTypes === 'cat'">
-                      <figure class="image is-64x64">
-                        <img
-                          class="is-64x64"
-                          src="../assets/cat.png"
-                          alt="Placeholder image"
-                        />
-                      </figure>
-                    </div>
-                    <div class="dog" v-else-if="post.animalTypes === 'dog'">
-                      <figure class="image is-128x128">
-                        <img
-                          class="is-64x64"
-                          src="../assets/dog.png"
-                          alt="Placeholder image"
-                        />
-                      </figure>
-                    </div>
-                    <div class="other" v-else>
-                      <figure class="image is-64x64">
-                        <img
-                          class="is-64x64"
-                          src="../assets/other.png"
-                          alt="Placeholder image"
-                        />
-                      </figure>
-                    </div>
-                  </div>
-                </div>
-                <div class="level-item">
-                  <h1>{{ user_data.username }}</h1>
-                </div>
-              </div>
-              <div class="level-right">
-                <div class="level-item">
-                  <figure class="image is-64x64">
-                    <img
-                      class="is-rounded is-64x64"
-                      v-bind:src="user_data.userImage"
-                      alt="Placeholder image"
-                    />
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="message">
-            <p>
-              {{ post.message }}
-            </p>
-          </div>
+        <div class="dog" v-else-if="post.animalTypes === 'dog'">
+          <figure class="image is-128x128">
+            <img
+              class="is-64x64"
+              src="../assets/dog.png"
+              alt="Placeholder image"
+            />
+          </figure>
+        </div>
+        <div class="other" v-else>
+          <figure class="image is-64x64">
+            <img
+              class="is-64x64"
+              src="../assets/other.png"
+              alt="Placeholder image"
+            />
+          </figure>
         </div>
       </div>
+      <div class="btn btn-primary">Y</div>
+      <div class="btn btn-primary">N</div>
     </div>
   </div>
 </template>
@@ -102,32 +69,15 @@ export default {
 </script>
 
 <style scoped>
-.post {
-  background: lightblue;
-  border-radius: 15px;
+.card {
+  width: 60%;
   overflow: hidden;
-  margin: 1rem;
+  margin-top: 3rem;
 }
-.post-img {
-  height: 400px;
-  width: 400px;
+.card-header {
+  height: 4rem;
 }
-.post-body {
-  display: block;
-  width: 100%;
-  height: 400px;
-}
-.message {
-  width: 400px;
-  line-height: 1.5;
-  position: relative;
-  top: 40%;
-  background: none;
-}
-.user {
-  float: right;
-  position: relative;
-  top: 0;
-  margin: 0.5rem;
+.card-footer {
+  height: 4rem;
 }
 </style>

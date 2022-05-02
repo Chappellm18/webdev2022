@@ -1,24 +1,31 @@
 <template>
-  <div class="post">
-    <div id="nav">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link" @click="havesAct = !havesAct">Haves</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" @click="havesAct = !havesAct">Needs</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="haves" v-if="havesAct === true">
-      <div v-for="post in posts_haves" :key="post.id">
-        <postHave :post="post" />
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div id="nav">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" @click="togTab('H')">Haves</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" @click="togTab('R')">Needs</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="needs" v-else>
-      <div v-for="post in posts_request" :key="post.id">
-        <postNeed :post="post" />
+      <div class="row">
+        <div class="col-md-12 offset-md-3">
+          <div class="haves" v-if="havesAct === true">
+            <div v-for="post in posts_haves" :key="post.id">
+              <postHave :post="post" />
+            </div>
+          </div>
+          <div class="needs" v-else>
+            <div v-for="post in posts_requests" :key="post.id">
+              <postNeed :post="post" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -31,16 +38,25 @@ import { GetAllPostHaves } from "../services/havePosts.js";
 import { GetAllPostRequests } from "../services/requestPosts.js";
 
 export default {
-  components: {
-    postHave,
-    postNeed,
-  },
   data() {
     return {
       havesAct: true,
       posts_haves: [],
       posts_requests: [],
     };
+  },
+  components: {
+    postHave,
+    postNeed,
+  },
+  methods: {
+    togTab(tab) {
+      if (tab === "H") {
+        this.havesAct = true;
+      } else {
+        this.havesAct = false;
+      }
+    },
   },
   async mounted() {
     this.posts_haves = await GetAllPostHaves();
@@ -56,12 +72,18 @@ export default {
         this.posts_requests.splice(this.posts_requests.indexOf(post), 1);
       }
     });
+    console.log(this.posts_requests);
   },
 };
 </script>
 
 <style scoped>
 #nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.postContent {
   display: flex;
   justify-content: center;
   align-items: center;

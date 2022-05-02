@@ -15,6 +15,18 @@ app.get('/', (req, res) => {
             res.json(err)
         })
 });
+// get org by id
+app.get('/orgs/:id', (req, res) => {
+    models.GetOrgById(req.params.id)
+
+        .then(org => {
+            res.json(org)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
+
 // get all orgs
 app.get('/orgs', (req, res) => {
     models.GetAllOrgs()

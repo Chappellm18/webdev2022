@@ -4,6 +4,8 @@
 
     <hr />
     <postInfo />
+    <br />
+    <br />
   </div>
 </template>
 

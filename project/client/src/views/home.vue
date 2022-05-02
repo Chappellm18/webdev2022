@@ -44,8 +44,11 @@
 
 <script>
 import imageGallary from "../components/imageGallary.vue";
+
 export default {
-  components: { imageGallary },
+  components: {
+    imageGallary,
+  },
 };
 </script>
 

@@ -21,6 +21,26 @@ module.exports.GetUserById = async function GetUserById(id) {
     })
 }
 
+// get org by id
+module.exports.GetOrgById = async function GetOrgById(id) {
+    // get org by id
+    let sql = "SELECT * FROM `web-dev`.`orgs` WHERE orgID = '" + id + "'";
+    //console.log(sql);
+    // return org
+    return new Promise((resolve, reject) => {
+        connection.query(sql, function (err, results) {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(results[0])
+            }
+        })
+    })
+}
+
+
+
 // Get all orgs from the orgs db
 module.exports.GetAllOrgs = function GetAllOrgs() {
     //return all orgs from mySQL db

@@ -1,17 +1,41 @@
 <template>
   <div class="posts">
-    <div class="requests" v-if="orgPosts === true">
-      <label>Requests</label>
-      <div v-for="post in posts_request" :key="post.id">
-        <postNeed :post="post" />
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a
+                class="nav-link btn active"
+                aria-current="page"
+                @click="toggleTab('H')"
+                >Haves</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn" @click="toggleTab('R')">Requests</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col offset-md-3">
+          <div id="requests" style="display: none">
+            <div v-for="post in posts_request" :key="post.id">
+              <postNeed :post="post" :org="this.id" />
+            </div>
+          </div>
+
+          <div id="haves">
+            <div v-for="post in posts_have" :key="post.id">
+              <postHave :post="post" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div v-else>Not an Organization</div>
 
-    <label>Have</label>
-    <div v-for="post in posts_have" :key="post.id">
-      <postHave :post="post" />
-    </div>
+    <div class="tabSection"></div>
   </div>
 </template>
 
@@ -27,6 +51,7 @@ export default {
     return {
       Session,
       user_id: "",
+      id: "",
       posts_have: [],
       orgPosts: false,
       posts_request: [],
@@ -56,7 +81,7 @@ export default {
       for (let i = 0; i < org.length; i++) {
         if (org[i] !== null) {
           let linked = org[i].linkedUsers;
-          let id = org[i].orgID;
+          this.id = org[i].orgID;
 
           if (linked !== null) {
             linked = linked.split(",");
@@ -64,7 +89,7 @@ export default {
             for (let j = 0; j < linked.length; j++) {
               if (linked[j] == this.Session.user.userID) {
                 // if the user is in the org then get the requests
-                let posts = await GetRequestPostsByOrgID(id);
+                let posts = await GetRequestPostsByOrgID(this.id);
 
                 // add the array posts to this.posts_request
                 posts.forEach((post) => {
@@ -88,6 +113,19 @@ export default {
       }
     }
   },
+  methods: {
+    toggleTab(tag) {
+      if (tag === "H") {
+        // set haves to block
+        document.getElementById("haves").style.display = "block";
+        document.getElementById("requests").style.display = "none";
+      } else {
+        // set requests to block
+        document.getElementById("requests").style.display = "block";
+        document.getElementById("haves").style.display = "none";
+      }
+    },
+  },
   components: {
     postHave,
     postNeed,
@@ -96,5 +134,11 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+.tabSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 </style>

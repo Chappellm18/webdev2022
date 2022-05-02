@@ -27,7 +27,7 @@ export default {
 
 <style>
 #app {
-  background: #9fb5b1;
+  background: linear-gradient(#bdd8d3, #5a7172);
 }
 .view {
   position: relative;
