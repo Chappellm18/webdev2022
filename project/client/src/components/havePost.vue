@@ -40,14 +40,16 @@
           </figure>
         </div>
       </div>
-      <div class="btn btn-primary">Y</div>
-      <div class="btn btn-primary">N</div>
+      <div class="likes">{{ post.likes }}</div>
+      <div class="btn btn-primary" @click="like()">Like</div>
+      <div class="btn btn-primary">Reply</div>
     </div>
   </div>
 </template>
 
 <script>
 import { GetUserById } from "../services/users.js";
+import { AddLike } from "../services/havePosts.js";
 export default {
   data() {
     return {
@@ -62,8 +64,13 @@ export default {
   },
   async mounted() {
     // get the user data based on posts userID
-    this.user_data = await GetUserById(this.post.userID);
+    this.user_data = await GetUserById(this.post.postID);
     // separate the user data into the user_data object
+  },
+  methods: {
+    like() {
+      AddLike(this.post.postID);
+    },
   },
 };
 </script>

@@ -15,6 +15,10 @@ export async function GetPostHaveById(id) {
     return await api('posts/have/' + id, null, 'GET');
 }
 
+export async function AddLike(id) {
+    return await api('posts/have/like/' + id, null, 'POST');
+}
+
 // create a post have
 export function CreatePostHave(user_id, message, image, animalTypes) {
     let post_have = {

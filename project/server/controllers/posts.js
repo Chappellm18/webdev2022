@@ -46,6 +46,16 @@ app.get('/request/user/:id', (req, res) => {
         })
 });
 
+app.post('/have/like/:id', (req, res) => {
+    models.AddLike(req.params.id)
+        .then(post => {
+            res.json(post)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
+
 // create a request post
 app.post('/request/newpost', (req, res) => {
     let user_id = req.body.user_id;

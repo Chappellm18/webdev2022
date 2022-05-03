@@ -14,6 +14,19 @@ module.exports.GetAllHavePosts = function GetAllHavePosts() {
     })
 }
 
+module.exports.AddLike = function AddLike(id) {
+    // add 1 to likes column of post with id = id
+    return new Promise((resolve, reject) => {
+        connection.query('UPDATE `web-dev`.`havepost` SET `likes` = `likes` + 1 WHERE `postID` = ' + id, function (err, results) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(results)
+            }
+        })
+    })
+}
+
 // get all request posts
 module.exports.GetAllRequestPosts = function GetAllRequestPosts() {
     // return all posts from mySQL db
