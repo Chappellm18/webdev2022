@@ -1,51 +1,90 @@
 <template>
-  <!-- sidebar with options -->
-  <div class="sidebar">
-    <div class="sidebar-header"></div>
-    <div class="sidebar-menu">
-      <ul>
-        <li>
-          <a>
-            <router-link to="createPost" class="mSelect"
-              >Create post</router-link
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <button
+              type="button"
+              class="btn"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
             >
-          </a>
-        </li>
-        <li>
-          <a><router-link to="findPost" class="mSelect">Filter</router-link></a>
-        </li>
-        <li>
-          <a
-            ><router-link to="profile" class="mSelect">
-              View your posts
-            </router-link></a
-          >
-        </li>
-      </ul>
+              Create New Post
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"
+              ><router-link to="profile"> View Your Posts</router-link></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create Post</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <createPost />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- sidebar with options -->
 </template>
 
 <script>
-export default {};
+import createPost from "../components/createPost.vue";
+export default {
+  components: {
+    createPost,
+  },
+};
 </script>
 
 <style scoped>
-.sidebar {
+.nav-link {
+  color: black;
+  text-decoration: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+.nav-item:hover {
+  background: lightblue;
+}
+.nav .flex-column {
   position: fixed;
-  top: 10rem;
-  background: rgba(224, 255, 255, 0.683);
-  padding: 1rem;
-  border-radius: 15px;
-}
-.mSelect {
-  margin: 3rem;
-  color: rgb(0, 0, 0);
-}
-.mSelect:visited {
-  color: rgb(0, 0, 0);
-}
-li:hover {
-  background-color: rgba(135, 230, 236, 0.596);
 }
 </style>

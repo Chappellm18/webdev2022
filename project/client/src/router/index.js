@@ -6,7 +6,7 @@ import share from '../views/share.vue'
 import mission from '../views/mission.vue'
 import shelterLocator from '../views/shelterLocator.vue'
 import profile from '../views/profile.vue'
-import createPost from '../views/createPost.vue'
+
 import reset from '../views/reset.vue'
 
 import Session from '../services/session'
@@ -19,7 +19,7 @@ const routes = [
   { path: '/mission', name: 'mission', component: mission, meta: { requiresLogin: false } },
   { path: '/shelterLocator', name: 'shelterLocator', component: shelterLocator, meta: { requiresLogin: false } },
   { path: '/profile', name: 'profile', component: profile, meta: { requiresLogin: true } },
-  { path: '/createPost', name: 'createPost', component: createPost, meta: { requiresLogin: true } },
+
   { path: '/reset', name: 'reset', component: reset, meta: { requiresLogin: true } },
 ]
 

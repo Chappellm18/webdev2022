@@ -46,8 +46,18 @@ app.get('/request/user/:id', (req, res) => {
         })
 });
 
+app.post('/request/like/:id', (req, res) => {
+    models.AddLikeRequest(req.params.id)
+        .then(post => {
+            res.json(post)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+});
+
 app.post('/have/like/:id', (req, res) => {
-    models.AddLike(req.params.id)
+    models.AddLikeHave(req.params.id)
         .then(post => {
             res.json(post)
         })
@@ -63,8 +73,9 @@ app.post('/request/newpost', (req, res) => {
     let image = req.body.image;
     let active = req.body.active;
     let orgInterested = req.body.orgInterested;
-    let animalTypes = req.body.animalTypes;
-    models.CreateRequestPost(user_id, message, image, active, orgInterested, animalTypes)
+    let animalTypes = req.body.animalType;
+    let title = req.body.postTitle;
+    models.CreateRequestPost(user_id, message, image, active, orgInterested, animalTypes, title)
         .then(post => {
             res.json(post)
         })
@@ -81,8 +92,9 @@ app.post('/have/newpost', (req, res) => {
     let image = req.body.image;
     let active = req.body.active;
     let orgInterested = req.body.orgInterested;
-    let animalTypes = req.body.animalTypes;
-    models.CreateHavePost(user_id, message, image, active, orgInterested, animalTypes)
+    let animalTypes = req.body.animalType;
+    let postTitle = req.body.postTitle;
+    models.CreateHavePost(user_id, message, image, active, orgInterested, animalTypes, postTitle)
         .then(post => {
             res.json(post)
         })

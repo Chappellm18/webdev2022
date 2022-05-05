@@ -41,8 +41,9 @@
         </div>
       </div>
       <div class="options">
-        <button class="btn btn-primary">Y</button>
-        <button class="btn btn-primary">N</button>
+        <div class="likes">{{ this.likes }}</div>
+        <div class="btn btn-primary" @click="like()">Like</div>
+        <button class="btn btn-primary">Reply</button>
       </div>
     </div>
   </div>
@@ -50,10 +51,12 @@
 
 <script>
 import { GetOrgById } from "../services/users.js";
+import { AddLike } from "../services/requestPosts.js";
 export default {
   data() {
     return {
       user_data: {},
+      likes: 0,
     };
   },
   props: {
@@ -67,7 +70,14 @@ export default {
     },
   },
   async mounted() {
+    this.likes = this.post.likes;
     this.user_data = await GetOrgById(this.post.orgID);
+  },
+  methods: {
+    like() {
+      this.likes++;
+      AddLike(this.post.postID);
+    },
   },
 };
 </script>

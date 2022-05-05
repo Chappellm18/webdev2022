@@ -14,7 +14,20 @@ module.exports.GetAllHavePosts = function GetAllHavePosts() {
     })
 }
 
-module.exports.AddLike = function AddLike(id) {
+module.exports.AddLikeRequest = function AddLikeRequest(id) {
+    // add 1 to likes column of post with id = id
+    return new Promise((resolve, reject) => {
+        connection.query('UPDATE `web-dev`.`requestpost` SET `likes` = `likes` + 1 WHERE `postID` = ' + id, function (err, results) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(results)
+            }
+        })
+    })
+}
+
+module.exports.AddLikeHave = function AddLikeHave(id) {
     // add 1 to likes column of post with id = id
     return new Promise((resolve, reject) => {
         connection.query('UPDATE `web-dev`.`havepost` SET `likes` = `likes` + 1 WHERE `postID` = ' + id, function (err, results) {
@@ -71,9 +84,11 @@ module.exports.GetAllRequestPostsByOrg = function GetAllRequestPostsByOrg(id) {
 
 
 // create a have post
-module.exports.CreateHavePost = function CreateHavePost(user_id, message, image, active, orgInterested, animalTypes) {
+module.exports.CreateHavePost = function CreateHavePost(user_id, message, image, active, orgInterested, animalTypes, postTitle) {
     // add post to mySQL db
-    let sql = "INSERT INTO `web-dev`.`havepost` VALUES ('" + user_id + "', '" + message + "', '" + image + "', '" + active + "', '" + orgInterested + "', '" + animalTypes + "')";
+    // sql columns userid, message,image, active orgInterested, animalTypes, likes,     postID, postTitle
+
+    let sql = "INSERT INTO `web-dev`.`havepost` VALUES ('" + user_id + "', '" + message + "', '" + image + "', '" + active + "', '" + orgInterested + "', '" + animalTypes + "', '0', '0', '" + postTitle + "')";
     return new Promise((resolve, reject) => {
 
         //console.log(sql);
@@ -88,9 +103,9 @@ module.exports.CreateHavePost = function CreateHavePost(user_id, message, image,
 }
 
 // create a request post
-module.exports.CreateRequestPost = function CreateRequestPost(user_id, message, image, active, orgInterested, animalTypes) {
+module.exports.CreateRequestPost = function CreateRequestPost(user_id, message, image, active, orgInterested, animalTypes, postTitle) {
     // add post to mySQL db
-    let sql = "INSERT INTO `web-dev`.`requestpost` VALUES ('" + user_id + "', '" + message + "', '" + image + "', '" + active + "', '" + orgInterested + "', '" + animalTypes + "')";
+    let sql = "INSERT INTO `web-dev`.`requestpost` VALUES ('" + user_id + "', '" + message + "', '" + image + "', '" + active + "', '" + orgInterested + "', '" + animalTypes + "', '0', '0', '" + postTitle + "')";
     return new Promise((resolve, reject) => {
 
         //console.log(sql);

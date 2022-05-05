@@ -20,14 +20,15 @@ export async function AddLike(id) {
 }
 
 // create a post have
-export function CreatePostHave(user_id, message, image, animalTypes) {
+export function CreatePostHave(user_id, message, image, animalTypes, postTitle) {
     let post_have = {
         user_id: user_id,
         message: message,
         image: image,
         active: 1,
         orgInterested: '',
-        animalTypes: animalTypes
+        animalType: animalTypes,
+        postTitle: postTitle
     };
     return api('posts/have/newpost', post_have, 'POST');
 }
