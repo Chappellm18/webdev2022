@@ -104,17 +104,45 @@ module.exports.CreateHavePost = function CreateHavePost(user_id, message, image,
 
 // create a request post
 module.exports.CreateRequestPost = function CreateRequestPost(user_id, message, image, active, orgInterested, animalTypes, postTitle) {
-    // add post to mySQL db
-    let sql = "INSERT INTO `web-dev`.`requestpost` VALUES ('" + user_id + "', '" + message + "', '" + image + "', '" + active + "', '" + orgInterested + "', '" + animalTypes + "', '0', '0', '" + postTitle + "')";
-    return new Promise((resolve, reject) => {
 
-        //console.log(sql);
+    // based on the userid get the orgID
+    // need to find the org with the userid in the linkedusers table
+    // then get the orgID from the org table
+    // then set id to orgID
+    // add post to mySQL db
+    let id;
+    let sql = "SELECT * FROM `web-dev`.`orgs`";
+    return new Promise((resolve, reject) => {
         connection.query(sql, function (err, results) {
             if (err) {
                 reject(err)
             } else {
                 resolve(results)
             }
+        })
+    }).then((results) => {
+        for (let i = 0; i < results.length; i++) {
+            let temp = results[i].linkedUsers.split(',');
+            for (let j = 0; j < temp.length; j++) {
+                if (temp[j] == user_id) {
+                    id = results[i].orgID;
+                    // break out of loop because we found the orgID
+                    break;
+                }
+            }
+        }
+    }).then(() => {
+        sql = "INSERT INTO `web-dev`.`requestpost` VALUES ('" + id + "', '" + message + "', 'NULL', '" + image + "', '" + active + "', '" + animalTypes + "', '0', '0', '" + postTitle + "')";
+        return new Promise((resolve, reject) => {
+
+            //console.log(sql);
+            connection.query(sql, function (err, results) {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(results)
+                }
+            })
         })
     })
 }
