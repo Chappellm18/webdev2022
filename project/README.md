@@ -51,7 +51,7 @@ The Request Posts table holds all the posts that are created by the shelters. Th
 
 # Usage
 ## Running the application
-After cloning or downloading the project you can run the serve by using: <br>
+After cloning or downloading the project you can run the server by using: <br>
 >`npm start` <br> 
 
 The application will be running on: <br>
@@ -79,8 +79,6 @@ The following are the variables that are used in the application:
 - VUE_APP_SQL_DB_PASSWORD: The password for the database.
 - VUE_APP_ZIP_CODE_KEY: The API key for the Zip Code API. ( PositionStack )
 
-6. Include screenshots of how your website looks and how it would look as if a user
-were to register, login, and test out the functionality of your site.
 # Screenshots
 ## New User process
 > The process of signing up and logging in to the application.
@@ -109,13 +107,21 @@ were to register, login, and test out the functionality of your site.
 ## Shelter Locator
 > The proccess of searching for shelters in the area. The registered shelters are shown.
 
-![](./images/where.PNG)
-![](./images/where2.PNG)
+<p align="center">
+  <img src="./images/where.PNG" />
+</p>
+
+<p align="center">
+  <img src="./images/where2.PNG" />
+</p>
+
 
 ## Profile
 > The profile page for the user.
 
-![](./images/showP.PNG)
+<p align="center">
+  <img src="./images/showP.PNG" />
+</p>
 
 > The user can edit their info
 
